@@ -42,13 +42,13 @@
     const img = container.querySelector('.media__img');
     return imageReady(img).then(() => gsap.fromTo(img,
       { opacity: 0, scale: 1.08 },
-      { opacity: 1, scale: 1, duration: 1.5, ease: EASE, delay }));
+      { opacity: 1, scale: 1, duration: 1.1, ease: EASE, delay }));
   }
 
   // La foto se descubre de abajo arriba y después enfoca.
   function revealMedia(media, delay = 0) {
-    gsap.to(media, { clipPath: OPEN, duration: 1.4, ease: 'expo.inOut', delay });
-    focusIn(media, delay + 0.35);
+    gsap.to(media, { clipPath: OPEN, duration: 1, ease: 'expo.inOut', delay });
+    focusIn(media, delay + 0.15);
   }
 
   /* ---------- Scroll suave (solo rueda del ratón; en táctil, scroll nativo) ---------- */
@@ -268,7 +268,7 @@
       mask: 'lines',
       linesClass: 'split-line',
       autoSplit: true,
-      onSplit: (self) => gsap.from(self.lines, { yPercent: 120, duration: 1.3, stagger: 0.09, ease: EASE, ...vars }),
+      onSplit: (self) => gsap.from(self.lines, { yPercent: 120, duration: 1, stagger: 0.09, ease: EASE, ...vars }),
     });
   }
 
@@ -288,26 +288,26 @@
   /* ---------- Revelados al hacer scroll ---------- */
   function reveals() {
     document.querySelectorAll('[data-split]').forEach((el) => {
-      splitLines(el, { scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+      splitLines(el, { scrollTrigger: { trigger: el, start: 'top bottom', once: true } });
     });
 
     document.querySelectorAll('[data-reveal]').forEach((el) => {
       gsap.fromTo(el, { opacity: 0, y: 28 }, {
-        opacity: 1, y: 0, duration: 1.1, ease: EASE,
-        scrollTrigger: { trigger: el, start: 'top 92%', once: true },
+        opacity: 1, y: 0, duration: 0.8, ease: EASE,
+        scrollTrigger: { trigger: el, start: 'top bottom', once: true },
       });
     });
 
     document.querySelectorAll('[data-media-reveal]').forEach((media) => {
       ScrollTrigger.create({
         trigger: media,
-        start: 'top 85%',
+        start: 'top bottom',
         once: true,
         onEnter: () => {
           // En los grupos de fotos de servicios, se descubren una tras otra
           const group = media.closest('.svc__gallery, .svc__pair');
           const delay = group
-            ? [...group.querySelectorAll('[data-media-reveal]')].indexOf(media) * 0.2
+            ? [...group.querySelectorAll('[data-media-reveal]')].indexOf(media) * 0.12
             : (media.closest('.feature__inset') ? 0.45 : 0);
           revealMedia(media, delay);
         },
@@ -317,19 +317,19 @@
     // Servicios: el nombre sube al entrar cada bloque
     document.querySelectorAll('.svc').forEach((svc) => {
       gsap.fromTo(svc.querySelectorAll('.svc__name'), { opacity: 0, y: 28 }, {
-        opacity: 1, y: 0, duration: 1.1, stagger: 0.1, ease: EASE,
-        scrollTrigger: { trigger: svc, start: 'top 80%', once: true },
+        opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: EASE,
+        scrollTrigger: { trigger: svc, start: 'top 95%', once: true },
       });
     });
 
     // Méritos de Olga: el filete dorado se dibuja y la frase sube, uno tras otro
     ScrollTrigger.batch('[data-merit]', {
-      start: 'top 88%',
+      start: 'top bottom',
       once: true,
       onEnter: (batch) => batch.forEach((merit, i) => {
-        gsap.timeline({ delay: i * 0.12, defaults: { ease: EASE } })
-          .to(merit.querySelector('.merit__rule'), { scaleX: 1, duration: 1.2, ease: 'expo.inOut' }, 0)
-          .fromTo(merit.querySelector('.merit__text'), { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 1.2 }, 0.2);
+        gsap.timeline({ delay: i * 0.08, defaults: { ease: EASE } })
+          .to(merit.querySelector('.merit__rule'), { scaleX: 1, duration: 0.9, ease: 'expo.inOut' }, 0)
+          .fromTo(merit.querySelector('.merit__text'), { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.9 }, 0.2);
       }),
     });
 
