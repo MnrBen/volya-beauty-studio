@@ -48,6 +48,15 @@ Acción principal: pedir cita. Las citas se piden por teléfono o WhatsApp al
 Secundario: que se vea el nivel de Olga y de sus trabajos, y que quede claro
 qué servicios ofrece.
 
+### Alcance: demo reducida
+Es una versión reducida para enseñar a la dueña, no una landing completa.
+Solo estos bloques:
+1. Portada muy visual.
+2. Servicios, con la micropigmentación de labios destacada.
+3. Olga y 2–3 reseñas.
+4. Contacto (dirección, horario, botones) y pie con el aviso legal.
+Nada de galería extensa ni secciones extra.
+
 ## 3. Contenido
 
 ### Dirección y horario
@@ -187,7 +196,7 @@ GSAP (ScrollTrigger, SplitText) y Lenis para el scroll suave.
 ## 6. Móvil y escritorio
 - Mobile first: se diseña partiendo del móvil. La mayoría de clientas
   llegarán desde Instagram o Google Maps.
-- Móvil: como mucho 6–7 pantallas de scroll. Nada de bloques iguales uno
+- Móvil: unas 4 pantallas de scroll. Nada de bloques iguales uno
   detrás de otro, ni una foto a pantalla completa por cada servicio.
 - Pedir cita siempre a mano en móvil (botón fijo).
 - Escritorio: diseño propio, no el móvil estirado. Ancho de contenido

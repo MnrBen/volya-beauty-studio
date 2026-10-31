@@ -3,10 +3,18 @@
 Referencia de marca para la web. Las imágenes originales viven en `imagenes/` y no se modifican; los recortes y tamaños web se generan en `img/` con `scripts/imagenes.sh`.
 
 ## Idea: «Al detalle»
-La web mira el trabajo de Olga de cerca. El círculo del logo se convierte en una **lupa**: es la única forma circular además de los botones y la propia insignia.
-- Portada: la lupa amplía las uñas (sigue al cursor en escritorio; recorre las uñas con el scroll en móvil).
-- Labios (pendiente): la lupa se abre hasta descubrir el resultado.
-- Galería de escritorio (pendiente): lupa al pasar el cursor.
+Los trabajos de Olga en primer plano son los protagonistas, sobre negro y marfil con el dorado del logo. Las fotos se descubren y «enfocan» al aparecer.
+
+## Alcance (demo reducida)
+1. Portada muy visual (fondo tinta).
+2. Servicios, con la micropigmentación de labios destacada en un bloque oscuro.
+3. Olga y 2–3 reseñas.
+4. Contacto (dirección, horario, botones) y pie con el aviso legal.
+
+Móvil: unas 4 pantallas. Sin galería ni secciones extra.
+
+## Resolución de las fotos
+Los originales miden unos 700 px de ancho. En escritorio se muestran como mucho a ~430 px (portada) y ~465 px (labios): nítidas hasta densidad de pantalla ≈1,4. En pantallas Retina (densidad 2) se amplían ~1,4×. Para nitidez total en Retina harían falta los originales del móvil de Olga.
 
 ## Logo
 - `imagenes/logo.webp` — insignia redonda, dorado sobre negro, con transparencia. Se usa tal cual (sin recortar, redibujar ni recolorear).
@@ -30,8 +38,9 @@ Sin degradados. Sin rosa pastel.
 - **Jost** 300–600 — texto e interfaz; mayúsculas espaciadas solo donde informan (eco del «BEAUTY STUDIO» del logo).
 
 ## Forma y movimiento
-- Fotos y bloques con esquina recta; botones en píldora; círculo solo para lupa y logo.
-- Sombra única para elementos flotantes (barra de cita, lupa).
+- Fotos y bloques con esquina recta; botones en píldora; el círculo, solo en el logo y el botón de llamar.
+- Sombra única para elementos flotantes (barra de cita).
+- Parallax en escritorio solo por traslación: las fotos nunca se amplían por encima de su tamaño.
 - GSAP 3.15.0 (ScrollTrigger, SplitText) y Lenis 1.3.27 en `vendor/`, versiones fijadas.
 - Curva `cubic-bezier(.16,1,.3,1)`; revelados de 1–1,5 s; solo `transform`, `opacity` y `clip-path`.
 - «Enfoque»: cada foto aparece sobre una miniatura borrosa de 24 px incrustada (sin animar filtros).
@@ -41,13 +50,12 @@ Sin degradados. Sin rosa pastel.
 
 | Uso | Original | Recorte (`img/`) |
 |---|---|---|
-| Portada | `manicura-17` | 4:5 · 480 / 764 |
-| Servicios · Uñas | `manicura-16` | 1:1 (lupa) · 4:5 (vista previa escritorio) |
-| Servicios · Pestañas | `pestanas-1` | 1:1 · 4:5 |
-| Servicios · Cejas | `cejas-1` | 1:1 · 4:5 (zona inferior, sin las fotos insertadas) |
-| Servicios · Micropigmentación | `labios-1` | 1:1 · 4:5 |
-| Labios (pendiente) | `labios-5`, `labios-2`, `labios-6` (proceso) | — |
-| Trabajos (pendiente) | `manicura-2, 3, 19, 24, 23, 18, 14, 4, 21` (selección) | 4:5 |
+| Portada (principal) | `manicura-23` — uñas rojas sobre cuero negro | 4:5 · 480 / 600 |
+| Portada (acompañante, solo escritorio) | `labios-5` | 4:5 · 480 / 688 |
+| Servicios · Uñas | `manicura-16` | 4:5 (miniatura en móvil, vista previa en escritorio) |
+| Servicios · Pestañas | `pestanas-1` | 4:5 |
+| Servicios · Cejas | `cejas-1` | 4:5 (zona inferior, sin las fotos insertadas) |
+| Labios destacado | `labios-1` (resultado) + `labios-6` (proceso) | 4:5 |
 | Olga (pendiente) | `olga-2` recortada; si no queda limpia, `olga-3` | 3:4 |
 
 **No se usan:**
