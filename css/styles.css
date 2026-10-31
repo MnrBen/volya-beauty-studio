@@ -682,15 +682,11 @@ svg use { pointer-events: none; }
   list-style: none;
   margin: var(--s-7) 0 0;
   padding: 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--line-gold);
 }
 .merit {
   position: relative;
-  display: grid;
-  grid-template-columns: 2.75rem minmax(0, 1fr);
-  column-gap: var(--s-4);
-  align-items: center;
-  padding-block: var(--s-4);
+  padding-block: var(--s-5);
 }
 .merit__rule {
   position: absolute;
@@ -698,26 +694,28 @@ svg use { pointer-events: none; }
   right: 0;
   top: 0;
   height: 1px;
-  background: var(--line);
+  background: var(--line-gold);
   transform-origin: left center;
 }
-.merit__icon {
-  display: grid;
-  place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border: 1px solid var(--line-gold);
-  border-radius: 50%;
+/* Dos niveles: etiqueta pequeña y, debajo, la parte clave en grande */
+.merit__label {
+  display: block;
+  margin-bottom: var(--s-2);
+  font: 500 0.75rem / 1.3 var(--font-text);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bronze);
 }
-.merit__icon svg { width: 0.875rem; height: 0.875rem; fill: var(--gold); }
-.merit__text {
-  font: 500 1.0625rem / 1.4 var(--font-text);
-  letter-spacing: 0.01em;
+.merit__title {
+  display: block;
+  font: 400 clamp(1.875rem, 8.2vw, 2.75rem) / 1.05 var(--font-display);
+  letter-spacing: -0.01em;
   color: var(--ink);
 }
+.merit--lead .merit__title { font-size: clamp(2.5rem, 11.5vw, 4rem); }
 .merit__text small {
   display: block;
-  margin-top: 0.15rem;
+  margin-top: var(--s-2);
   font: 400 0.8125rem / 1.3 var(--font-text);
   letter-spacing: 0.02em;
   color: var(--stone);
@@ -1052,6 +1050,8 @@ svg use { pointer-events: none; }
   }
   .olga__name { left: var(--s-5); right: var(--s-5); bottom: var(--s-5); font-size: 3.5rem; }
   .merits { margin-top: 0; }
+  .merit__title { font-size: 2rem; }
+  .merit--lead .merit__title { font-size: 2.75rem; }
 
   .review { flex-basis: 60%; }
 
@@ -1201,9 +1201,9 @@ svg use { pointer-events: none; }
   .olga__name { left: var(--s-6); right: var(--s-6); bottom: var(--s-6); font-size: clamp(3.5rem, 5.6vw, 5.25rem); }
   .olga__content { grid-column: 7 / 13; }
   .merits { margin-top: 0; }
-  .merit { padding-block: var(--s-5); grid-template-columns: 3.25rem minmax(0, 1fr); column-gap: var(--s-5); }
-  .merit__icon { width: 3.25rem; height: 3.25rem; }
-  .merit__text { font-size: 1.1875rem; }
+  .merit { padding-block: var(--s-6); }
+  .merit__title { font-size: clamp(2.25rem, 3vw, 2.75rem); }
+  .merit--lead .merit__title { font-size: clamp(3rem, 4.4vw, 4rem); }
 
   .reviews { margin-top: var(--s-9); }
   .reviews__list {
@@ -1246,7 +1246,6 @@ svg use { pointer-events: none; }
 .motion [data-focus] .media__img { opacity: 0; }
 .motion [data-media-reveal] { clip-path: inset(100% 0 0 0); }
 .motion .merit__rule { transform: scaleX(0); }
-.motion .merit__icon,
 .motion .merit__text { opacity: 0; }
 
 /* Holgura de las máscaras de SplitText para no recortar cursivas ni comas */
