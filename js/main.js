@@ -329,7 +329,7 @@
       onEnter: (batch) => batch.forEach((merit, i) => {
         gsap.timeline({ delay: i * 0.08, defaults: { ease: EASE } })
           .to(merit.querySelector('.merit__rule'), { scaleX: 1, duration: 1.4, ease: 'expo.inOut' }, 0)
-          .fromTo(merit.querySelector('.merit__text'), { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 1.4 }, 0.2);
+          .fromTo(merit.querySelectorAll('.merit__icon, .merit__text'), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.4 }, 0.2);
       }),
     });
 
