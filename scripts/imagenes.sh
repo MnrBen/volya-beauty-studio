@@ -48,14 +48,16 @@ recorte manicura-2  4x5 752:940:0:150     480 752
 recorte manicura-19 4x5 808:1010:0:0      360 560
 recorte manicura-24 4x5 515:644:0:150     515
 recorte pestanas-1  4x5 752:940:0:230     480 752
+recorte pestanas-1  det 300:375:430:470   300
 recorte cejas-1     4x5 452:565:300:720   452
+recorte cejas-1     det 232:290:380:210   232
 
 # Micropigmentación de labios destacada: resultado y proceso
 recorte labios-1    4x5 683:854:0:16      480 683
 recorte labios-6    4x5 516:645:0:25      516
 
-# Olga: olga-1, recortada para que mande ella frente a los globos
-recorte olga-1      3x4 420:560:160:40    420
+# Olga: olga-2 recortada para que mande ella (cara nítida, sin el cartel ni la mesa)
+recorte olga-2      3x4 396:528:0:40      396
 
 # Favicon e icono táctil a partir del logo (con su transparencia)
 ffmpeg -v error -y -i "$SRC/logo.webp" -vf "scale=32:32:flags=lanczos" "$OUT/favicon-32.png"

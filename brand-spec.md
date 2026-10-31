@@ -53,12 +53,15 @@ Sin degradados. Sin rosa pastel.
 |---|---|---|
 | Portada (muro, 4:5 · 360/560) | `manicura-17, 16, 3, 4, 5, 13, 14, 18, 20, 21`, `labios-5`, `labios-2` | Móvil 2 columnas, tablet 3, escritorio 4 |
 | Servicios · Uñas (collage) | `manicura-2` (principal), `manicura-19`, `manicura-24` | 4:5 |
-| Servicios · Pestañas | `pestanas-1` | 4:5 |
-| Servicios · Cejas | `cejas-1` | 4:5 (zona inferior, sin las fotos insertadas) |
+| Servicios · Pestañas | `pestanas-1` + detalle de las pestañas | 4:5 + detalle 300 px |
+| Servicios · Cejas | `cejas-1` + detalle de la ceja superior | 4:5 (zona inferior, sin las fotos insertadas) + detalle 232 px |
+| Pie (tira a Instagram) | `manicura-15, 21, 5, 18, 4, 16` | recortes del muro, en cuadrado |
 | Labios destacado | `labios-1` (resultado) + `labios-6` (proceso) | 4:5 |
-| Olga | `olga-1` recortada para que mande ella frente a los globos | 3:4 · 420 |
+| Olga | `olga-2` recortada (cara nítida, sin cartel ni mesa) | 3:4 · 396 |
 
-**Reseñas elegidas (texto literal):** Ainhoa O., Laura, Natalia P.
+**Reseñas (texto literal):** en servicios, Maria C. (uñas), Ainhoa O. (pestañas) y Alma H. (cejas); en Olga, Evangéline M., Laura y Natalia P.
+
+**Botones de cita:** solo en portada, cabecera (escritorio), barra fija (móvil), menú y contacto. Los servicios no llevan botón propio.
 
 **No se usan:**
 - `manicura-11` — etiqueta de una marca de vino.
@@ -67,7 +70,7 @@ Sin degradados. Sin rosa pastel.
 - `manicura-10` — el turquesa choca con la paleta.
 - `labios-3` — menos nivel.
 - `labios-4` — crema anestésica.
-- `olga-2`, `olga-3` — se eligió `olga-1` para la sección de Olga.
+- `olga-1`, `olga-3` — se mantiene `olga-2` para la sección de Olga.
 - `manicura-7` — en el muro mandaba la orquídea.
 - `manicura-23` — descartada para la portada.
 

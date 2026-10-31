@@ -490,8 +490,8 @@ svg use { pointer-events: none; }
 .rating__stars svg { width: 0.75rem; height: 0.75rem; fill: var(--gold); }
 
 /* ==========================================================================
-   Servicios: uñas con un collage de tres trabajos; pestañas y cejas en
-   filas con foto. Nombres grandes y botón de cita en cada uno.
+   Servicios: uñas con un collage de tres trabajos; pestañas y cejas con foto
+   y detalle. Cada uno con lo que dice una clienta.
    ========================================================================== */
 .services { padding-top: var(--s-8); }
 
@@ -503,9 +503,9 @@ svg use { pointer-events: none; }
 
 .services__grid {
   display: grid;
-  row-gap: var(--s-8);
+  row-gap: var(--s-9);
   margin-top: var(--s-7);
-  padding-bottom: var(--s-8);
+  padding-bottom: var(--s-9);
 }
 
 .svc__body::before {
@@ -517,17 +517,32 @@ svg use { pointer-events: none; }
   background: var(--gold);
 }
 .svc__name {
-  font: 400 clamp(2.25rem, 10vw, 3.5rem) / 1 var(--font-display);
+  font: 400 clamp(2.5rem, 11vw, 3.5rem) / 1 var(--font-display);
   letter-spacing: -0.01em;
   overflow-wrap: break-word;
 }
 .svc__detail {
   margin-top: var(--s-2);
-  font-size: var(--text-sm);
-  line-height: 1.45;
+  font: 500 var(--text-xs) / 1.5 var(--font-text);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+
+/* Lo que dice una clienta de ese servicio */
+.svc__quote { margin-top: var(--s-5); max-width: 34rem; }
+.svc__quote p {
+  font: italic 400 1.125rem / 1.5 var(--font-display);
+  color: var(--ink);
+}
+.svc__quote p::before { content: "«"; color: var(--gold); }
+.svc__quote p::after { content: "»"; color: var(--gold); }
+.svc__quote figcaption {
+  margin-top: var(--s-3);
+  font: 500 var(--text-xs) / 1.3 var(--font-text);
+  letter-spacing: 0.08em;
   color: var(--stone);
 }
-.svc__cta { margin-top: var(--s-4); white-space: nowrap; }
 
 /* Uñas: collage (principal a la izquierda, dos a la derecha) */
 .svc__gallery {
@@ -537,19 +552,33 @@ svg use { pointer-events: none; }
 }
 .svc__main { grid-row: 1 / span 2; }
 .svc__side { aspect-ratio: 4 / 5; }
-.svc--nails .svc__body { margin-top: var(--s-5); }
+.svc--nails .svc__body { margin-top: var(--s-6); }
 
-/* Pestañas y cejas: foto y texto en fila; cejas, en espejo */
-.svc--row {
-  display: grid;
-  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1fr);
-  column-gap: var(--s-4);
-  align-items: center;
+/* Pestañas y cejas: foto grande y detalle superpuesto */
+.svc__pair {
+  position: relative;
+  padding-right: 30%;
+  padding-bottom: var(--s-7);
 }
-.svc--row .svc__cta { padding-inline: 1rem; letter-spacing: 0.1em; }
 .svc__photo { aspect-ratio: 4 / 5; }
-.svc--flip .svc__photo { order: 2; }
-.svc--row .svc__name { font-size: clamp(2rem, 8.5vw, 3rem); }
+.svc__inset {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 42%;
+}
+.svc__inset .media {
+  aspect-ratio: 4 / 5;
+  box-shadow: 0 0 0 5px var(--ivory);
+}
+.svc__inset figcaption {
+  margin-top: var(--s-2);
+  font: 500 0.75rem / 1 var(--font-text);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+.svc--duo .svc__body { margin-top: var(--s-5); }
 
 /* ---------- Micropigmentación de labios destacada (fondo arena) ---------- */
 .feature {
@@ -623,37 +652,62 @@ svg use { pointer-events: none; }
 
 .olga__grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0, 1fr);
   grid-template-areas:
-    "title title"
-    "photo creds"
-    "body body";
+    "title"
+    "photo"
+    "creds"
+    "body";
   column-gap: var(--s-5);
   row-gap: var(--s-4);
   align-items: start;
 }
 .olga__title { grid-area: title; }
-.olga__photo { grid-area: photo; }
+.olga__photo { grid-area: photo; width: 78%; }
 .olga__photo .media { aspect-ratio: 3 / 4; }
 .olga__body { grid-area: body; }
 
 .olga__creds {
   grid-area: creds;
   list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-2);
   margin: 0;
   padding: 0;
-  font-size: 0.875rem;
-  line-height: 1.35;
 }
-.olga__creds li {
-  padding-block: 0.5rem;
-  border-top: 1px solid var(--line);
+.cred {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  background: var(--sand);
+  border-top: 1px solid var(--gold);
+  font: 400 0.9375rem / 1.3 var(--font-display);
   overflow-wrap: anywhere;
 }
-.olga__creds li:first-child { padding-top: 0; border-top: 0; }
+.cred svg {
+  flex: none;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-top: 0.3em;
+  fill: var(--gold);
+}
+.cred small {
+  display: block;
+  margin-top: 0.15rem;
+  font: 400 0.75rem / 1.3 var(--font-text);
+  color: var(--stone);
+}
+.cred--lead {
+  grid-column: 1 / -1;
+  padding-block: var(--s-4);
+  font-size: 1.25rem;
+  font-style: italic;
+}
 
 .olga__intro { max-width: 40ch; color: var(--stone); }
-.olga__body .link-arrow { margin-top: var(--s-3); }
+.olga__ig { margin-top: var(--s-5); }
 
 .reviews { margin-top: var(--s-6); }
 .reviews__title {
@@ -749,8 +803,7 @@ svg use { pointer-events: none; }
   gap: var(--s-3);
 }
 .contact__actions > :first-child,
-.contact__actions .link-arrow { grid-column: 1 / -1; }
-.contact__actions .link-arrow { justify-self: start; }
+.contact__actions > :last-child { grid-column: 1 / -1; }
 .contact__actions .btn--line { padding-inline: 1rem; }
 .contact__phone { display: none; }
 
@@ -770,6 +823,105 @@ svg use { pointer-events: none; }
 .site-footer__logo { width: 3rem; height: 3rem; grid-row: span 2; }
 .site-footer__nav { display: flex; flex-wrap: wrap; column-gap: var(--s-5); }
 .site-footer__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--ink);
+  text-underline-offset: 0.3em;
+  text-decoration-color: var(--line-gold);
+}
+
+/* Pie de la web: tira de trabajos que lleva a Instagram, marca y redes */
+.footer { padding-top: var(--s-8); border-top: 0; }
+
+.footer__strip {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer__strip-label {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.6rem;
+  min-height: 2.75rem;
+  font: 400 clamp(1.5rem, 6vw, 2.25rem) / 1.15 var(--font-display);
+}
+.footer__handle { font-style: italic; color: var(--bronze); }
+.footer__strip-label svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+.footer__photos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-2);
+  margin-top: var(--s-4);
+}
+.footer__photos img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: var(--placeholder);
+  transition: transform 0.6s var(--ease-out);
+}
+@media (hover: hover) {
+  .footer__strip:hover .footer__strip-label svg { transform: translateX(6px); }
+  .footer__strip:hover .footer__photos img { transform: translateY(-6px); }
+  .footer__strip:hover .footer__photos img:nth-child(even) { transform: translateY(6px); }
+}
+
+.footer__main {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--s-4);
+  row-gap: var(--s-5);
+  margin-top: var(--s-8);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--line);
+}
+.footer__logo { width: 4.5rem; height: 4.5rem; }
+.footer__name { font: 400 1.75rem / 1.05 var(--font-display); }
+.footer__name em { font-style: italic; }
+.footer__tag {
+  margin-top: var(--s-2);
+  font: 500 0.6875rem / 1.5 var(--font-text);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+.footer__social { grid-column: 1 / -1; display: flex; gap: var(--s-3); }
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  color: var(--ink);
+  transition: background-color var(--dur-ui) var(--ease-out), color var(--dur-ui) var(--ease-out), border-color var(--dur-ui) var(--ease-out);
+}
+.icon-btn svg { width: 1.25rem; height: 1.25rem; fill: currentColor; }
+@media (hover: hover) {
+  .icon-btn:hover { background: var(--gold); border-color: var(--gold); }
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-5);
+  margin-top: var(--s-6);
+  padding-block: var(--s-4);
+  border-top: 1px solid var(--line);
+  font-size: var(--text-xs);
+  color: var(--stone);
+}
+.footer__bottom a {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
@@ -861,15 +1013,23 @@ svg use { pointer-events: none; }
     column-gap: var(--s-6);
   }
   .svc--nails { grid-column: 1 / -1; }
-  .svc--flip .svc__photo { order: 0; }
+
+
+  .footer__photos { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .footer__main { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .footer__social { grid-column: auto; }
 
   .feature__body .btn { width: auto; }
 
   .olga__grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "title title"
+      "photo creds"
+      "body body";
     column-gap: var(--s-6);
   }
-  .olga__creds { font-size: var(--text-base); }
+  .olga__photo { width: auto; }
 
   .review { flex-basis: 60%; }
 
@@ -965,10 +1125,21 @@ svg use { pointer-events: none; }
     margin-top: var(--s-8);
     padding-bottom: var(--s-10);
   }
-  .svc--nails { grid-column: 1 / 7; grid-row: 1 / span 2; }
-  .svc--row { grid-column: 8 / 13; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); column-gap: var(--s-6); }
-  .svc--nails .svc__name { font-size: 4.25rem; }
-  .svc--row .svc__name { font-size: 2.75rem; }
+  .svc--nails {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--s-5);
+    align-items: center;
+  }
+  .svc--nails .svc__gallery { grid-column: 1 / 8; }
+  .svc--nails .svc__body { grid-column: 9 / 13; margin-top: 0; }
+  .svc--nails .svc__name { font-size: 5rem; }
+  .svc--duo { grid-column: span 6; }
+  .svc--duo:last-child { margin-top: var(--s-10); }
+  .svc--duo .svc__pair { max-width: 34rem; padding-right: 32%; }
+  .svc--duo .svc__name { font-size: 4rem; }
+  .svc__inset { max-width: 11.5rem; }
 
   /* Labios: foto e inserto del proceso a la izquierda, texto a la derecha */
   .feature { padding-block: var(--s-10) var(--s-11); }
@@ -1001,7 +1172,9 @@ svg use { pointer-events: none; }
   }
   .olga__photo { grid-column: 1 / 5; grid-row: 1 / span 3; max-width: 20rem; }
   .olga__title { grid-column: 6 / 13; grid-row: 1; align-self: end; }
-  .olga__creds { grid-column: 6 / 11; grid-row: 2; font-size: 1.1875rem; }
+  .olga__creds { grid-column: 6 / 12; grid-row: 2; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cred { font-size: 1.0625rem; padding: var(--s-4) var(--s-5); }
+  .cred--lead { font-size: 1.5rem; }
   .olga__body { grid-column: 6 / 11; grid-row: 3; }
 
   .reviews { margin-top: var(--s-9); }
@@ -1026,6 +1199,10 @@ svg use { pointer-events: none; }
   .contact__head { grid-column: 1 / 8; }
   .contact__info { grid-column: 1 / 8; grid-row: 2; align-self: start; }
   .contact__actions { grid-column: 9 / 13; grid-row: 1 / span 2; align-self: center; grid-template-columns: minmax(0, 1fr); }
+  .footer { padding-top: var(--s-10); }
+  .footer__logo { width: 5.5rem; height: 5.5rem; }
+  .footer__name { font-size: 2.5rem; }
+
   .contact__block address,
   .hours { font-size: var(--text-base); }
 }

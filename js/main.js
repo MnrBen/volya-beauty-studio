@@ -304,17 +304,19 @@
         start: 'top 85%',
         once: true,
         onEnter: () => {
-          // En el collage de uñas, las fotos se descubren una tras otra
-          const gallery = media.closest('.svc__gallery');
-          const delay = gallery ? [...gallery.children].indexOf(media) * 0.18 : (media.closest('.feature__inset') ? 0.45 : 0);
+          // En los grupos de fotos de servicios, se descubren una tras otra
+          const group = media.closest('.svc__gallery, .svc__pair');
+          const delay = group
+            ? [...group.querySelectorAll('[data-media-reveal]')].indexOf(media) * 0.2
+            : (media.closest('.feature__inset') ? 0.45 : 0);
           revealMedia(media, delay);
         },
       });
     });
 
-    // Servicios: nombre y botón suben al entrar cada bloque
+    // Servicios: el nombre sube al entrar cada bloque
     document.querySelectorAll('.svc').forEach((svc) => {
-      gsap.fromTo(svc.querySelectorAll('.svc__name, .svc__cta'), { opacity: 0, y: 28 }, {
+      gsap.fromTo(svc.querySelectorAll('.svc__name'), { opacity: 0, y: 28 }, {
         opacity: 1, y: 0, duration: 1.1, stagger: 0.1, ease: EASE,
         scrollTrigger: { trigger: svc, start: 'top 80%', once: true },
       });
