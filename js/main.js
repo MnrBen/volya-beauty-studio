@@ -322,6 +322,17 @@
       });
     });
 
+    // Méritos de Olga: el filete dorado se dibuja y la frase sube, uno tras otro
+    ScrollTrigger.batch('[data-merit]', {
+      start: 'top 88%',
+      once: true,
+      onEnter: (batch) => batch.forEach((merit, i) => {
+        gsap.timeline({ delay: i * 0.12, defaults: { ease: EASE } })
+          .to(merit.querySelector('.merit__rule'), { scaleX: 1, duration: 1.2, ease: 'expo.inOut' }, 0)
+          .fromTo(merit.querySelector('.merit__text'), { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 1.2 }, 0.2);
+      }),
+    });
+
     // Escritorio: las fotos se desplazan a distinto ritmo (solo traslación, sin ampliar)
     gsap.matchMedia().add('(min-width: 1024px)', () => {
       document.querySelectorAll('[data-parallax]').forEach((el) => {

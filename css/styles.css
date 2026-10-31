@@ -648,65 +648,71 @@ svg use { pointer-events: none; }
 /* ==========================================================================
    Olga y reseñas
    ========================================================================== */
-.olga { padding-block: var(--s-7); }
+/* Retrato a sangre con el nombre superpuesto; méritos como frases grandes */
+.olga { padding-bottom: var(--s-8); }
 
-.olga__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-areas:
-    "title"
-    "photo"
-    "creds"
-    "body";
-  column-gap: var(--s-5);
-  row-gap: var(--s-4);
-  align-items: start;
+.olga__portrait {
+  position: relative;
+  margin-inline: calc(-1 * var(--gutter));
 }
-.olga__title { grid-area: title; }
-.olga__photo { grid-area: photo; width: 78%; }
-.olga__photo .media { aspect-ratio: 3 / 4; }
-.olga__body { grid-area: body; }
+.olga__photo { aspect-ratio: 4 / 5; }
+.olga__portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    rgb(var(--veil) / 0.92) 0%,
+    rgb(var(--veil) / 0.72) 30%,
+    rgb(var(--veil) / 0) 60%);
+  pointer-events: none;
+}
+.olga__name {
+  position: absolute;
+  z-index: 1;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: var(--s-6);
+  font: 400 clamp(3.25rem, 15vw, 6rem) / 0.92 var(--font-display);
+  letter-spacing: -0.02em;
+  color: var(--ivory);
+}
+.olga__name em { display: block; font-style: italic; }
 
-.olga__creds {
-  grid-area: creds;
+.merits {
   list-style: none;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--s-2);
-  margin: 0;
+  margin: var(--s-7) 0 0;
   padding: 0;
+  border-bottom: 1px solid var(--line-gold);
 }
-.cred {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--s-3);
-  padding: var(--s-3) var(--s-4);
-  background: var(--sand);
-  border-top: 1px solid var(--gold);
-  font: 400 0.9375rem / 1.3 var(--font-display);
-  overflow-wrap: anywhere;
+.merit {
+  position: relative;
+  padding-block: var(--s-5);
 }
-.cred svg {
-  flex: none;
-  width: 0.75rem;
-  height: 0.75rem;
-  margin-top: 0.3em;
-  fill: var(--gold);
+.merit__rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: var(--gold);
+  transform-origin: left center;
 }
-.cred small {
+.merit__text {
+  font: 400 clamp(1.75rem, 7.4vw, 2.5rem) / 1.1 var(--font-display);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.merit__text em { font-style: italic; color: var(--bronze); }
+.merit__text small {
   display: block;
-  margin-top: 0.15rem;
-  font: 400 0.75rem / 1.3 var(--font-text);
+  margin-top: var(--s-2);
+  font: 500 0.75rem / 1.3 var(--font-text);
+  letter-spacing: 0.12em;
   color: var(--stone);
 }
-.cred--lead {
-  grid-column: 1 / -1;
-  padding-block: var(--s-4);
-  font-size: 1.25rem;
-  font-style: italic;
-}
+.merit--lead .merit__text { font-size: clamp(2.25rem, 10.5vw, 3.75rem); line-height: 1; }
 
-.olga__intro { max-width: 40ch; color: var(--stone); }
+.olga__intro { margin-top: var(--s-6); max-width: 40ch; color: var(--stone); }
 .olga__ig { margin-top: var(--s-5); }
 
 .reviews { margin-top: var(--s-6); }
@@ -1021,15 +1027,22 @@ svg use { pointer-events: none; }
 
   .feature__body .btn { width: auto; }
 
+  .olga { padding-top: var(--s-9); }
   .olga__grid {
+    display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-areas:
-      "title title"
-      "photo creds"
-      "body body";
     column-gap: var(--s-6);
+    align-items: start;
   }
-  .olga__photo { width: auto; }
+  .olga__portrait {
+    margin-inline: 0;
+    position: sticky;
+    top: calc(var(--header-h) + var(--s-5));
+  }
+  .olga__name { left: var(--s-5); right: var(--s-5); bottom: var(--s-5); font-size: 3.5rem; }
+  .merits { margin-top: 0; }
+  .merit__text { font-size: 1.75rem; }
+  .merit--lead .merit__text { font-size: 2.5rem; }
 
   .review { flex-basis: 60%; }
 
@@ -1162,20 +1175,26 @@ svg use { pointer-events: none; }
   .feature__claim { margin-top: var(--s-5); }
   .feature__title { font-size: clamp(2.75rem, 4.9vw, 4.25rem); }
 
-  /* Olga: retrato a la izquierda; nombre, reconocimientos y texto a la derecha */
-  .olga { padding-block: var(--s-10) var(--s-10); }
+  /* Olga: retrato fijo a la izquierda mientras pasan sus méritos a la derecha */
+  .olga { padding-block: var(--s-10); }
   .olga__grid {
+    display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-template-areas: none;
     column-gap: var(--s-5);
-    row-gap: var(--s-6);
+    align-items: start;
   }
-  .olga__photo { grid-column: 1 / 5; grid-row: 1 / span 3; max-width: 20rem; }
-  .olga__title { grid-column: 6 / 13; grid-row: 1; align-self: end; }
-  .olga__creds { grid-column: 6 / 12; grid-row: 2; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .cred { font-size: 1.0625rem; padding: var(--s-4) var(--s-5); }
-  .cred--lead { font-size: 1.5rem; }
-  .olga__body { grid-column: 6 / 11; grid-row: 3; }
+  .olga__portrait {
+    grid-column: 1 / 6;
+    position: sticky;
+    top: calc(var(--header-h) + var(--s-5));
+    max-width: 29rem;
+  }
+  .olga__name { left: var(--s-6); right: var(--s-6); bottom: var(--s-6); font-size: clamp(3.5rem, 5.6vw, 5.25rem); }
+  .olga__content { grid-column: 7 / 13; }
+  .merits { margin-top: 0; }
+  .merit { padding-block: var(--s-6); }
+  .merit__text { font-size: clamp(2rem, 2.9vw, 2.75rem); }
+  .merit--lead .merit__text { font-size: clamp(2.75rem, 4.4vw, 4.25rem); }
 
   .reviews { margin-top: var(--s-9); }
   .reviews__list {
@@ -1217,6 +1236,8 @@ svg use { pointer-events: none; }
 .motion [data-hero-title] { opacity: 0; }
 .motion [data-focus] .media__img { opacity: 0; }
 .motion [data-media-reveal] { clip-path: inset(100% 0 0 0); }
+.motion .merit__rule { transform: scaleX(0); }
+.motion .merit__text { opacity: 0; }
 
 /* Holgura de las máscaras de SplitText para no recortar cursivas ni comas */
 .split-line-mask {

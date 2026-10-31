@@ -57,7 +57,7 @@ Sin degradados. Sin rosa pastel.
 | Servicios · Cejas | `cejas-1` + detalle de la ceja superior | 4:5 (zona inferior, sin las fotos insertadas) + detalle 232 px |
 | Pie (tira a Instagram) | `manicura-15, 21, 5, 18, 4, 16` | recortes del muro, en cuadrado |
 | Labios destacado | `labios-1` (resultado) + `labios-6` (proceso) | 4:5 |
-| Olga | `olga-2` recortada (cara nítida, sin cartel ni mesa) | 3:4 · 396 |
+| Olga | `olga-2` con el cartel de VOLYA, a sangre en móvil con su nombre superpuesto; la mesa queda bajo el velo | 4:5 · 480 / 680 |
 
 **Reseñas (texto literal):** en servicios, Maria C. (uñas), Ainhoa O. (pestañas) y Alma H. (cejas); en Olga, Evangéline M., Laura y Natalia P.
 
