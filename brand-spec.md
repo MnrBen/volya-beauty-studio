@@ -3,15 +3,15 @@
 Referencia de marca para la web. Las imágenes originales viven en `imagenes/` y no se modifican; los recortes y tamaños web se generan en `img/` con `scripts/imagenes.sh`.
 
 ## Idea: «Al detalle»
-Los trabajos de Olga en primer plano son los protagonistas, sobre negro y marfil con el dorado del logo. Las fotos se descubren y «enfocan» al aparecer.
+Los trabajos de Olga en primer plano son los protagonistas, sobre marfil y arena cálidos con el negro y el dorado del logo como acentos. Sin fondos negros: el negro queda para el logo, el texto y los botones. Las fotos se descubren y «enfocan» al aparecer.
 
 ## Alcance (demo reducida)
-1. Portada muy visual (fondo tinta).
-2. Servicios, con la micropigmentación de labios destacada en un bloque oscuro.
+1. Portada muy visual (foto grande sobre marfil).
+2. Servicios, con la micropigmentación de labios destacada en un bloque arena.
 3. Olga y 2–3 reseñas.
 4. Contacto (dirección, horario, botones) y pie con el aviso legal.
 
-Móvil: unas 4 pantallas. Sin galería ni secciones extra.
+Móvil: unas 4,6 pantallas a 390 × 844. Sin galería ni secciones extra.
 
 ## Resolución de las fotos
 Los originales miden unos 700 px de ancho. En escritorio se muestran como mucho a ~430 px (portada, desde 764 px: nítida hasta densidad ≈1,8) y ~465 px (labios, nítida hasta ≈1,4). En pantallas Retina (densidad 2) se amplían ~1,4×. Para nitidez total en Retina harían falta los originales del móvil de Olga.
@@ -25,10 +25,11 @@ Medido del logo (negro #070302, dorado medio #CAAE58, bronce #8F5E31) + marfil c
 
 | Token | Hex | Uso | Contraste |
 |---|---|---|---|
-| `--ink` | #0B0807 | Texto y capítulos oscuros | 17,7:1 sobre marfil |
-| `--ivory` | #F6F1E8 | Fondo principal (~70 %) | — |
-| `--gold` | #CAAE58 | Filetes, lupa, estrellas; texto solo sobre tinta | 9,2:1 sobre tinta · 1,9:1 sobre marfil (nunca texto) |
-| `--bronze` | #8F5E31 | Texto dorado pequeño sobre marfil | 4,9:1 |
+| `--ink` | #0B0807 | Texto y botón principal | 17,7:1 sobre marfil |
+| `--ivory` | #F6F1E8 | Fondo principal | — |
+| `--sand` | #EDE5D8 | Bloques destacados (labios, contacto) | — |
+| `--gold` | #CAAE58 | Filetes y estrellas (nunca texto sobre claro) | 1,9:1 sobre marfil |
+| `--bronze` | #7A4E26 | Etiquetas y enlaces pequeños; derivado del bronce del logo | 6,3:1 marfil · 5,7:1 arena |
 | `--stone` | #6B6157 | Texto secundario | 5,4:1 |
 
 Sin degradados. Sin rosa pastel.
@@ -56,7 +57,9 @@ Sin degradados. Sin rosa pastel.
 | Servicios · Pestañas | `pestanas-1` | 4:5 |
 | Servicios · Cejas | `cejas-1` | 4:5 (zona inferior, sin las fotos insertadas) |
 | Labios destacado | `labios-1` (resultado) + `labios-6` (proceso) | 4:5 |
-| Olga (pendiente) | `olga-2` recortada; si no queda limpia, `olga-3` | 3:4 |
+| Olga | `olga-2` recortada (cara nítida, sin cartel ni mesa) | 3:4 · 396 |
+
+**Reseñas elegidas (texto literal):** Ainhoa O., Laura, Natalia P.
 
 **No se usan:**
 - `manicura-11` — etiqueta de una marca de vino.
@@ -66,6 +69,8 @@ Sin degradados. Sin rosa pastel.
 - `labios-3` — menos nivel.
 - `labios-4` — crema anestésica.
 - `olga-1` — fondo de globos rosas.
+- `olga-3` — la cara sale desenfocada (el foco está en el cartel).
+- `manicura-23` — descartada para la portada.
 
 ## Pendientes de confirmar con la dueña
 - Precios y duraciones (hueco comentado en cada servicio).

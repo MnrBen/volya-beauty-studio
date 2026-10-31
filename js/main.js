@@ -73,21 +73,12 @@
     window.scrollTo({ top, behavior: prefersReduced ? 'auto' : 'smooth' });
   }
 
-  /* ---------- Cabecera ----------
-     Se invierte sobre las secciones oscuras y, en móvil, se esconde al bajar
-     y vuelve al subir. */
-  const darkSections = [...document.querySelectorAll('[data-theme="dark"]')];
+  /* ---------- Cabecera: en móvil se esconde al bajar y vuelve al subir ---------- */
   let menuOpen = false;
   let lastY = window.scrollY;
 
   function updateHeader() {
     const y = window.scrollY;
-    const probe = headerHeight() / 2;
-    const onDark = darkSections.some((section) => {
-      const r = section.getBoundingClientRect();
-      return r.top <= probe && r.bottom >= probe;
-    });
-    header.classList.toggle('on-dark', onDark);
     header.classList.toggle('is-scrolled', y > 8);
     if (Math.abs(y - lastY) < 6) return;
     const hide = !desktopQuery.matches && !menuOpen && y > lastY && y > 160;
@@ -95,7 +86,6 @@
     lastY = y;
   }
   window.addEventListener('scroll', updateHeader, { passive: true });
-  window.addEventListener('resize', updateHeader);
   updateHeader();
 
   /* ---------- Menú (móvil y tablet) ---------- */
@@ -176,13 +166,26 @@
     target.focus({ preventScroll: true });
   });
 
-  /* ---------- Botón fijo de cita: aparece al dejar atrás el de la portada ---------- */
+  /* ---------- Botón fijo de cita ----------
+     Aparece al dejar atrás el de la portada y se retira en Contacto, donde
+     ya están los mismos botones. */
   const ctaBar = document.querySelector('[data-cta-bar]');
   const heroActions = document.querySelector('[data-hero-actions]');
+  const contact = document.querySelector('[data-contact]');
   if (ctaBar && heroActions && 'IntersectionObserver' in window) {
+    let pastHero = false;
+    let atContact = false;
+    const sync = () => ctaBar.classList.toggle('is-visible', pastHero && !atContact);
     new IntersectionObserver(([entry]) => {
-      ctaBar.classList.toggle('is-visible', !entry.isIntersecting && entry.boundingClientRect.top < 0);
+      pastHero = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+      sync();
     }).observe(heroActions);
+    if (contact) {
+      new IntersectionObserver(([entry]) => {
+        atContact = entry.isIntersecting || entry.boundingClientRect.top < 0;
+        sync();
+      }, { rootMargin: '0px 0px -30% 0px' }).observe(contact);
+    }
   }
 
   /* ---------- Servicios: vista previa de escritorio ---------- */

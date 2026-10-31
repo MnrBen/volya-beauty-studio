@@ -39,6 +39,9 @@ recorte cejas-1     4x5 452:565:300:720   452
 recorte labios-1    4x5 683:854:0:16      480 683
 recorte labios-6    4x5 516:645:0:25      516
 
+# Olga: olga-2 recortada para que mande ella (cara nítida, sin el cartel ni la mesa)
+recorte olga-2      3x4 396:528:0:40      396
+
 # Favicon e icono táctil a partir del logo (con su transparencia)
 ffmpeg -v error -y -i "$SRC/logo.webp" -vf "scale=32:32:flags=lanczos" "$OUT/favicon-32.png"
 ffmpeg -v error -y -i "$SRC/logo.webp" -vf "scale=180:180:flags=lanczos" "$OUT/apple-touch-icon.png"
