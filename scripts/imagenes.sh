@@ -26,12 +26,12 @@ recorte() {
     -c:v libwebp -quality 50 "$OUT/lqip/$name-$ratio.webp"
 }
 
-# Portada: uñas rojas sobre cuero negro (principal) y labios (acompañante en escritorio)
-recorte manicura-23 4x5 600:750:66:220    480 600
+# Portada: almendra nude (principal) y labios (acompañante en escritorio)
+recorte manicura-17 4x5 764:955:70:0      480 764
 recorte labios-5    4x5 688:860:0:15      480 688
 
 # Servicios (miniatura en móvil y vista previa en escritorio, 4:5)
-recorte manicura-16 4x5 739:924:100:0     480 739
+recorte manicura-24 4x5 515:644:0:150     515
 recorte pestanas-1  4x5 752:940:0:230     480 752
 recorte cejas-1     4x5 452:565:300:720   452
 

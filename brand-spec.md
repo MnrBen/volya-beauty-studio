@@ -14,7 +14,7 @@ Los trabajos de Olga en primer plano son los protagonistas, sobre negro y marfil
 Móvil: unas 4 pantallas. Sin galería ni secciones extra.
 
 ## Resolución de las fotos
-Los originales miden unos 700 px de ancho. En escritorio se muestran como mucho a ~430 px (portada) y ~465 px (labios): nítidas hasta densidad de pantalla ≈1,4. En pantallas Retina (densidad 2) se amplían ~1,4×. Para nitidez total en Retina harían falta los originales del móvil de Olga.
+Los originales miden unos 700 px de ancho. En escritorio se muestran como mucho a ~430 px (portada, desde 764 px: nítida hasta densidad ≈1,8) y ~465 px (labios, nítida hasta ≈1,4). En pantallas Retina (densidad 2) se amplían ~1,4×. Para nitidez total en Retina harían falta los originales del móvil de Olga.
 
 ## Logo
 - `imagenes/logo.webp` — insignia redonda, dorado sobre negro, con transparencia. Se usa tal cual (sin recortar, redibujar ni recolorear).
@@ -50,9 +50,9 @@ Sin degradados. Sin rosa pastel.
 
 | Uso | Original | Recorte (`img/`) |
 |---|---|---|
-| Portada (principal) | `manicura-23` — uñas rojas sobre cuero negro | 4:5 · 480 / 600 |
+| Portada (principal) | `manicura-17` — almendra nude con degradado | 4:5 · 480 / 764 |
 | Portada (acompañante, solo escritorio) | `labios-5` | 4:5 · 480 / 688 |
-| Servicios · Uñas | `manicura-16` | 4:5 (miniatura en móvil, vista previa en escritorio) |
+| Servicios · Uñas | `manicura-24` — francesa negra con lazos | 4:5 (miniatura en móvil, vista previa en escritorio) |
 | Servicios · Pestañas | `pestanas-1` | 4:5 |
 | Servicios · Cejas | `cejas-1` | 4:5 (zona inferior, sin las fotos insertadas) |
 | Labios destacado | `labios-1` (resultado) + `labios-6` (proceso) | 4:5 |

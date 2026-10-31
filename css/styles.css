@@ -372,8 +372,8 @@ svg use { pointer-events: none; }
 }
 
 /* ==========================================================================
-   Portada (móvil): la foto ocupa la parte alta de la pantalla y el título
-   se monta sobre su borde inferior, que es cuero oscuro.
+   Portada (móvil): la foto ocupa la parte alta de la pantalla, encuadrada
+   abajo para que se vean todas las puntas; el texto empieza con corte limpio.
    ========================================================================== */
 .hero {
   position: relative;
@@ -393,25 +393,17 @@ svg use { pointer-events: none; }
   min-height: 17rem;
   margin-inline: calc(-1 * var(--gutter));
 }
-/* Velo arriba para leer la cabecera y fundido abajo hacia el título */
-.hero__visual::before,
-.hero__visual::after {
+/* Velo arriba para leer la cabecera sobre la foto */
+.hero__visual::before {
   content: "";
   position: absolute;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 1;
-  pointer-events: none;
-}
-.hero__visual::before {
-  top: 0;
   height: 8rem;
   background: linear-gradient(rgb(11 8 7 / 0.72), rgb(11 8 7 / 0));
-}
-.hero__visual::after {
-  bottom: -1px;
-  height: 55%;
-  background: linear-gradient(to top, var(--ink) 4%, rgb(11 8 7 / 0.8) 30%, rgb(11 8 7 / 0));
+  pointer-events: none;
 }
 
 .hero__photo--main {
@@ -419,15 +411,14 @@ svg use { pointer-events: none; }
   inset: 0;
 }
 .hero__photo--main .media { height: 100%; }
-.hero__photo--main .media > img { object-position: 50% 32%; }
+.hero__photo--main .media > img { object-position: 50% 100%; }
 .hero__photo figcaption { display: none; }
 .hero__photo--accent { display: none; }
 
 .hero__text {
   position: relative;
   z-index: 2;
-  margin-top: -5.5rem;
-  padding-bottom: var(--s-6);
+  padding-block: var(--s-6);
 }
 
 .hero__title {
@@ -747,8 +738,7 @@ svg use { pointer-events: none; }
     min-height: 0;
     margin: 0;
   }
-  .hero__visual::before,
-  .hero__visual::after { display: none; }
+  .hero__visual::before { display: none; }
   .hero__photo--main { position: relative; inset: auto; }
   .hero__photo--main .media { height: auto; aspect-ratio: 4 / 5; }
   .hero__photo--main .media > img { object-position: 50% 50%; }
@@ -759,7 +749,7 @@ svg use { pointer-events: none; }
     letter-spacing: 0.04em;
     color: var(--ivory-muted);
   }
-  .hero__text { margin-top: 0; padding-bottom: 0; }
+  .hero__text { padding-block: 0; }
 }
 
 /* ==========================================================================
