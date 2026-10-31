@@ -73,13 +73,18 @@
     window.scrollTo({ top, behavior: prefersReduced ? 'auto' : 'smooth' });
   }
 
-  /* ---------- Cabecera: en móvil se esconde al bajar y vuelve al subir ---------- */
+  /* ---------- Cabecera ----------
+     Clara y transparente sobre las fotos de la portada; con fondo marfil
+     después. En móvil se esconde al bajar y vuelve al subir. */
+  const hero = document.querySelector('[data-hero]');
   let menuOpen = false;
   let lastY = window.scrollY;
 
   function updateHeader() {
     const y = window.scrollY;
-    header.classList.toggle('is-scrolled', y > 8);
+    const overHero = !!hero && hero.getBoundingClientRect().bottom > headerHeight();
+    header.classList.toggle('on-dark', overHero);
+    header.classList.toggle('is-scrolled', !overHero && y > 8);
     if (Math.abs(y - lastY) < 6) return;
     const hide = !desktopQuery.matches && !menuOpen && y > lastY && y > 160;
     header.classList.toggle('is-hidden', hide);
@@ -188,29 +193,66 @@
     }
   }
 
-  /* ---------- Servicios: vista previa de escritorio ---------- */
-  function initServices() {
-    const rows = [...document.querySelectorAll('[data-service]')];
-    const items = [...document.querySelectorAll('.preview__item')];
-    if (!rows.length || rows.length !== items.length) return;
-    let active = rows.findIndex((row) => row.classList.contains('is-active'));
-    if (active < 0) active = 0;
-
-    const activate = (i) => {
-      if (i === active) return;
-      rows[active].classList.remove('is-active');
-      items[active].classList.remove('is-active');
-      active = i;
-      rows[i].classList.add('is-active');
-      items[i].classList.add('is-active');
-      if (motion) {
-        gsap.fromTo(items[i].querySelector('.media__img'), { scale: 1.06 }, { scale: 1, duration: 1.4, ease: EASE });
+  /* ---------- Muro de la portada ----------
+     Cada columna repite su juego de fotos las veces necesarias para cubrir
+     la pantalla y se desplaza en bucle, una hacia arriba y la siguiente hacia
+     abajo. Solo traslación: las fotos nunca se amplían. */
+  function initWall() {
+    const wall = document.querySelector('[data-wall]');
+    if (!wall) return;
+    const markLoaded = (img) => {
+      const done = () => img.classList.add('is-loaded');
+      if (img.complete && img.naturalWidth) done();
+      else {
+        img.addEventListener('load', done, { once: true });
+        img.addEventListener('error', done, { once: true });
       }
     };
+    wall.querySelectorAll('.wall__img').forEach(markLoaded);
+    if (!motion) return;
 
-    rows.forEach((row, i) => {
-      row.addEventListener('pointerenter', () => { if (desktopQuery.matches) activate(i); });
-      row.addEventListener('focusin', () => activate(i));
+    const tweens = [];
+    const build = () => {
+      tweens.forEach((t) => t.kill());
+      tweens.length = 0;
+      wall.querySelectorAll('[data-wall-col]').forEach((col, i) => {
+        const track = col.querySelector('.wall__track');
+        track.querySelectorAll('[data-clone]').forEach((n) => n.remove());
+        gsap.set(track, { clearProps: 'transform' });
+        if (col.offsetParent === null) return;
+        const set = track.querySelector('.wall__set');
+        const setH = set.offsetHeight;
+        if (!setH) return;
+        const copies = Math.ceil((wall.offsetHeight + Math.abs(col.offsetTop) + setH) / setH);
+        for (let k = 0; k < copies; k++) {
+          const clone = set.cloneNode(true);
+          clone.setAttribute('data-clone', '');
+          clone.querySelectorAll('img').forEach(markLoaded);
+          track.appendChild(clone);
+        }
+        const up = i % 2 === 0;
+        tweens.push(gsap.fromTo(track,
+          { y: up ? 0 : -setH },
+          { y: up ? -setH : 0, duration: setH / 16, ease: 'none', repeat: -1 }));
+      });
+    };
+    build();
+
+    // Fuera de pantalla, el muro se para para no gastar batería
+    ScrollTrigger.create({
+      trigger: wall,
+      start: 'top bottom',
+      end: 'bottom top',
+      onToggle: (self) => tweens.forEach((t) => (self.isActive ? t.resume() : t.pause())),
+    });
+
+    let lastW = window.innerWidth;
+    let timer;
+    window.addEventListener('resize', () => {
+      if (window.innerWidth === lastW) return;
+      lastW = window.innerWidth;
+      clearTimeout(timer);
+      timer = setTimeout(build, 250);
     });
   }
 
@@ -234,25 +276,13 @@
   function intro() {
     const tl = gsap.timeline({ defaults: { ease: EASE } });
 
-    tl.fromTo('.site-header__inner', { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 1.2 }, 0.2);
+    tl.fromTo('[data-wall-col]', { opacity: 0, yPercent: 6 }, { opacity: 1, yPercent: 0, duration: 1.8, stagger: 0.12 }, 0);
+    tl.fromTo('.site-header__inner', { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 1.2 }, 0.3);
 
     const title = document.querySelector('[data-hero-title]');
-    if (title) splitLines(title, { delay: 0.35 });
+    if (title) splitLines(title, { delay: 0.45 });
 
-    tl.fromTo('.hero [data-intro]', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.1, stagger: 0.08 }, 0.75);
-
-    // La foto principal se abre primero; la de labios (solo escritorio), después.
-    const photos = [...document.querySelectorAll('.hero__photo')].filter((fig) => fig.offsetParent !== null);
-    photos.forEach((fig, i) => {
-      revealMedia(fig.querySelector('.media'), 0.05 + i * 0.3);
-      tl.fromTo(fig.querySelector('figcaption'), { opacity: 0 }, { opacity: 1, duration: 1 }, 1.4 + i * 0.2);
-    });
-    // Fotos ocultas a este ancho: se dejan visibles por si la ventana cambia de tamaño
-    document.querySelectorAll('.hero__photo').forEach((fig) => {
-      if (fig.offsetParent !== null) return;
-      gsap.set(fig.querySelector('.media'), { clipPath: OPEN });
-      gsap.set([fig.querySelector('figcaption'), fig.querySelector('.media__img')], { opacity: 1 });
-    });
+    tl.fromTo('.hero [data-intro]', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.1, stagger: 0.08 }, 0.85);
   }
 
   /* ---------- Revelados al hacer scroll ---------- */
@@ -273,41 +303,22 @@
         trigger: media,
         start: 'top 85%',
         once: true,
-        onEnter: () => revealMedia(media, media.closest('.feature__inset') ? 0.45 : 0),
+        onEnter: () => {
+          // En el collage de uñas, las fotos se descubren una tras otra
+          const gallery = media.closest('.svc__gallery');
+          const delay = gallery ? [...gallery.children].indexOf(media) * 0.18 : (media.closest('.feature__inset') ? 0.45 : 0);
+          revealMedia(media, delay);
+        },
       });
     });
 
-    // Servicios: el filete se dibuja, el texto sube y la miniatura se descubre
-    const rows = gsap.utils.toArray('[data-service]');
-    gsap.set(rows.flatMap((row) => [...row.querySelectorAll('.rule')]), { scaleX: 0 });
-    gsap.set(rows.flatMap((row) => [...row.querySelectorAll('.service__body, .service__cta')]), { opacity: 0, y: 24 });
-
-    ScrollTrigger.batch(rows, {
-      start: 'top 88%',
-      once: true,
-      onEnter: (batch) => batch.forEach((row, i) => {
-        const delay = i * 0.12;
-        const tl = gsap.timeline({ delay, defaults: { ease: EASE } });
-        tl.to(row.querySelectorAll('.rule'), { scaleX: 1, duration: 1.4, ease: 'expo.inOut' }, 0)
-          .to(row.querySelectorAll('.service__body, .service__cta'), { opacity: 1, y: 0, duration: 1.1, stagger: 0.06 }, 0.25);
-        const thumb = row.querySelector('.service__thumb');
-        if (thumb && thumb.offsetParent !== null) revealMedia(thumb, delay + 0.1);
-        else if (thumb) gsap.set(thumb, { clipPath: OPEN });
-      }),
+    // Servicios: nombre y botón suben al entrar cada bloque
+    document.querySelectorAll('.svc').forEach((svc) => {
+      gsap.fromTo(svc.querySelectorAll('.svc__name, .svc__cta'), { opacity: 0, y: 28 }, {
+        opacity: 1, y: 0, duration: 1.1, stagger: 0.1, ease: EASE,
+        scrollTrigger: { trigger: svc, start: 'top 80%', once: true },
+      });
     });
-
-    const preview = document.querySelector('.preview');
-    if (preview) {
-      gsap.to(preview, {
-        clipPath: OPEN, duration: 1.5, ease: 'expo.inOut',
-        scrollTrigger: { trigger: preview, start: 'top 85%', once: true },
-      });
-      const first = preview.querySelector('.preview__item.is-active .media__img');
-      if (first) gsap.fromTo(first, { scale: 1.1 }, {
-        scale: 1, duration: 2, ease: EASE,
-        scrollTrigger: { trigger: preview, start: 'top 85%', once: true },
-      });
-    }
 
     // Escritorio: las fotos se desplazan a distinto ritmo (solo traslación, sin ampliar)
     gsap.matchMedia().add('(min-width: 1024px)', () => {
@@ -327,7 +338,7 @@
   }
 
   /* ---------- Arranque ---------- */
-  initServices();
+  initWall();
 
   if (motion) {
     const fontsReady = document.fonts ? Promise.race([document.fonts.ready, wait(1200)]) : Promise.resolve();

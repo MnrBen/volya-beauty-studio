@@ -38,6 +38,9 @@
   --line: rgb(11 8 7 / 0.14);
   --line-gold: rgb(202 174 88 / 0.6);
   --placeholder: #E4DBCC;
+  --veil: 26 19 15;          /* velo cálido sobre las fotos (rgb) */
+  --wall: #2A211B;
+  --wall-gap: 0.5rem;
 
   /* Tipografía */
   --font-display: "Bodoni Moda", "Bodoni 72", Didot, Georgia, serif;
@@ -195,7 +198,6 @@ svg use { pointer-events: none; }
 }
 .btn--gold { --btn-bg: var(--gold); --btn-fg: var(--ink); --btn-fill: var(--ivory); }
 .btn--line { --btn-bg: transparent; --btn-fg: var(--ink); --btn-border: var(--ink); }
-.btn--line svg { fill: none; }
 .btn--sm {
   min-height: 2.75rem;
   padding: 0 1.375rem;
@@ -256,6 +258,8 @@ svg use { pointer-events: none; }
   background: var(--ivory);
   box-shadow: 0 1px 0 var(--line);
 }
+.site-header.on-dark { color: var(--ivory); }
+.site-header.on-dark .site-header__cta { --btn-bg: var(--gold); --btn-fg: var(--ink); --btn-fill: var(--ivory); }
 .site-header.is-hidden { transform: translateY(-100%); }
 
 .site-header__inner {
@@ -390,33 +394,61 @@ svg use { pointer-events: none; }
 }
 
 /* ==========================================================================
-   Portada (móvil): la foto ocupa la parte alta de la pantalla, bajo la
-   cabecera transparente, encuadrada abajo para que se vean todas las
-   puntas. El texto empieza con corte limpio sobre marfil.
+   Portada: muro de trabajos de Olga en columnas que se desplazan despacio,
+   con el título superpuesto sobre un velo cálido. Cada foto se ve a su
+   tamaño real, así el fondo llena la pantalla sin verse borroso.
    ========================================================================== */
-.hero__inner {
+.hero {
+  position: relative;
   display: flex;
-  flex-direction: column;
+  align-items: flex-end;
   min-height: 100svh;
+  overflow: hidden;
+  background: var(--wall);
+  color: var(--ivory);
 }
 
-.hero__visual {
-  order: -1;
-  position: relative;
-  flex: 1 1 auto;
-  min-height: 18rem;
-  margin-inline: calc(-1 * var(--gutter));
-}
-.hero__photo--main {
+.hero__wall {
   position: absolute;
   inset: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--wall-gap);
 }
-.hero__photo--main .media { height: 100%; }
-.hero__photo--main .media > img { object-position: 50% 100%; }
-.hero__photo figcaption { display: none; }
-.hero__photo--accent { display: none; }
+.wall__col { min-width: 0; }
+.wall__col:nth-child(2) { margin-top: -30%; }
+.wall__col:nth-child(n + 3) { display: none; }
+.wall__track { will-change: transform; }
+.wall__set {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wall-gap);
+  padding-bottom: var(--wall-gap);
+}
+.wall__img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: rgb(255 255 255 / 0.04);
+}
+.motion .wall__img:not(.is-loaded) { opacity: 0; }
+.wall__img.is-loaded { transition: opacity 1.2s var(--ease-out); }
 
-.hero__text { padding-block: var(--s-5) var(--s-5); }
+.hero__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    rgb(var(--veil) / 0.92) 0%,
+    rgb(var(--veil) / 0.74) 36%,
+    rgb(var(--veil) / 0.18) 66%,
+    rgb(var(--veil) / 0.5) 100%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  padding-block: calc(var(--header-h) + var(--s-7)) var(--s-7);
+}
 
 .hero__title {
   font-family: var(--font-display);
@@ -429,7 +461,7 @@ svg use { pointer-events: none; }
 .hero__lead {
   margin-top: var(--s-4);
   max-width: 32ch;
-  color: var(--stone);
+  color: rgb(246 241 232 / 0.88);
 }
 
 .hero__actions {
@@ -440,29 +472,28 @@ svg use { pointer-events: none; }
   margin-top: var(--s-5);
 }
 .hero__actions .btn { width: 100%; }
-
-/* En móvil la nota de Google se ve junto a las reseñas */
-.hero .rating { display: none; }
+.hero .link-call { color: rgb(246 241 232 / 0.82); }
+.hero .link-call span { color: var(--ivory); }
 
 .rating {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.625rem;
-  margin-top: var(--s-4);
+  margin-top: var(--s-3);
   font-size: var(--text-xs);
   letter-spacing: 0.04em;
-  color: var(--stone);
+  color: rgb(246 241 232 / 0.82);
 }
-.rating__score { font: 400 1.5rem / 1 var(--font-display); color: var(--ink); letter-spacing: 0; }
+.rating__score { font: 400 1.5rem / 1 var(--font-display); color: var(--ivory); letter-spacing: 0; }
 .rating__stars { display: inline-flex; gap: 2px; }
 .rating__stars svg { width: 0.75rem; height: 0.75rem; fill: var(--gold); }
 
 /* ==========================================================================
-   Servicios
+   Servicios: uñas con un collage de tres trabajos; pestañas y cejas en
+   filas con foto. Nombres grandes y botón de cita en cada uno.
    ========================================================================== */
-.services { padding-top: var(--s-7); }
-.services__grid { padding-bottom: var(--s-7); }
+.services { padding-top: var(--s-8); }
 
 .services__intro {
   margin-top: var(--s-4);
@@ -470,91 +501,55 @@ svg use { pointer-events: none; }
   color: var(--stone);
 }
 
-.services__list {
-  list-style: none;
-  margin: var(--s-6) 0 0;
-  padding: 0;
-}
-
-.service {
-  position: relative;
+.services__grid {
   display: grid;
-  grid-template-columns: 4rem minmax(0, 1fr);
-  grid-template-areas:
-    "thumb body"
-    "thumb cta";
-  column-gap: var(--s-4);
-  align-items: start;
-  padding-block: var(--s-5) var(--s-3);
+  row-gap: var(--s-8);
+  margin-top: var(--s-7);
+  padding-bottom: var(--s-8);
 }
 
-.rule {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 1px;
-  background: var(--line);
-  transform-origin: left center;
-}
-.rule--end { top: auto; bottom: 0; }
-
-/* Filete dorado del servicio activo (escritorio) */
-.service::after {
+.svc__body::before {
   content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  z-index: 1;
+  display: block;
+  width: 2.5rem;
   height: 1px;
+  margin-bottom: var(--s-4);
   background: var(--gold);
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.9s var(--ease-out);
 }
-
-.service__thumb {
-  grid-area: thumb;
-  width: 4rem;
-  aspect-ratio: 4 / 5;
-}
-.service__body { grid-area: body; }
-.service__name {
-  font: 400 var(--title-m) / 1.05 var(--font-display);
-  letter-spacing: -0.005em;
+.svc__name {
+  font: 400 clamp(2.25rem, 10vw, 3.5rem) / 1 var(--font-display);
+  letter-spacing: -0.01em;
   overflow-wrap: break-word;
 }
-.service__detail {
-  margin-top: 0.375rem;
+.svc__detail {
+  margin-top: var(--s-2);
   font-size: var(--text-sm);
   line-height: 1.45;
   color: var(--stone);
 }
+.svc__cta { margin-top: var(--s-4); white-space: nowrap; }
 
-.service__cta {
-  grid-area: cta;
-  justify-self: start;
-  display: inline-flex;
+/* Uñas: collage (principal a la izquierda, dos a la derecha) */
+.svc__gallery {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: var(--s-2);
+}
+.svc__main { grid-row: 1 / span 2; }
+.svc__side { aspect-ratio: 4 / 5; }
+.svc--nails .svc__body { margin-top: var(--s-5); }
+
+/* Pestañas y cejas: foto y texto en fila; cejas, en espejo */
+.svc--row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1fr);
+  column-gap: var(--s-4);
   align-items: center;
-  gap: 0.5rem;
-  min-height: 2.75rem;
-  font: 500 var(--text-xs) / 1 var(--font-text);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--bronze);
-  text-decoration: none;
 }
-.service__cta svg {
-  width: 1.125rem;
-  height: 1.125rem;
-  transition: transform var(--dur-ui) var(--ease-out);
-}
-@media (hover: hover) {
-  .service__cta:hover svg { transform: translateX(4px); }
-}
-
-.services__preview { display: none; }
+.svc--row .svc__cta { padding-inline: 1rem; letter-spacing: 0.1em; }
+.svc__photo { aspect-ratio: 4 / 5; }
+.svc--flip .svc__photo { order: 2; }
+.svc--row .svc__name { font-size: clamp(2rem, 8.5vw, 3rem); }
 
 /* ---------- Micropigmentación de labios destacada (fondo arena) ---------- */
 .feature {
@@ -855,31 +850,18 @@ svg use { pointer-events: none; }
 @media (min-width: 768px) {
   .hero__actions { flex-direction: row; flex-wrap: wrap; align-items: center; column-gap: var(--s-5); row-gap: var(--s-2); }
   .hero__actions .btn { width: auto; }
-  .hero .rating { display: flex; }
 
-  /* La foto deja de ser franja superior y va junto al título */
-  .hero__visual { order: 0; min-height: 0; margin: 0; }
-  .hero__photo--main { position: relative; inset: auto; }
-  .hero__photo--main .media { height: auto; aspect-ratio: 4 / 5; }
-  .hero__photo--main .media > img { object-position: 50% 50%; }
-  .hero__photo figcaption {
-    display: block;
-    margin-top: var(--s-3);
-    font-size: var(--text-xs);
-    letter-spacing: 0.04em;
-    color: var(--stone);
-  }
-  .hero__text { padding-block: 0; }
+  .hero__wall { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .wall__col:nth-child(2) { margin-top: -18%; }
+  .wall__col:nth-child(3) { display: block; margin-top: -40%; }
+  .hero__content { padding-bottom: var(--s-9); }
 
-  .service {
-    grid-template-columns: 5rem minmax(0, 1fr) auto;
-    grid-template-areas: "thumb body cta";
-    column-gap: var(--s-5);
-    align-items: center;
-    padding-block: var(--s-5);
+  .services__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: var(--s-6);
   }
-  .service__thumb { width: 5rem; }
-  .service__cta { justify-self: end; }
+  .svc--nails { grid-column: 1 / -1; }
+  .svc--flip .svc__photo { order: 0; }
 
   .feature__body .btn { width: auto; }
 
@@ -903,16 +885,6 @@ svg use { pointer-events: none; }
 
 /* Solo tablet */
 @media (min-width: 768px) and (max-width: 1023.98px) {
-  .hero__inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    column-gap: var(--s-6);
-    align-items: center;
-    min-height: 0;
-    padding-block: calc(var(--header-h) + var(--s-7)) var(--s-8);
-  }
-  .hero__title { font-size: 4.75rem; }
-
   .feature__grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-areas:
@@ -962,80 +934,41 @@ svg use { pointer-events: none; }
   .nav a:focus-visible::after { transform: scaleX(1); transform-origin: left center; }
   .site-header__cta { display: inline-flex; }
 
-  /* Portada: título a la izquierda; a la derecha, la foto principal y la de
-     labios, más pequeña y más baja. Tamaños limitados para no ampliar las
-     fotos por encima de su resolución. */
-  .hero__inner {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--s-5);
-    align-items: center;
-    min-height: min(100svh, 60rem);
-    padding-block: calc(var(--header-h) + var(--s-6)) var(--s-10);
+  /* Portada: cuatro columnas de fotos; título a la izquierda sobre el velo */
+  .hero { align-items: center; }
+  .hero__wall { grid-template-columns: repeat(4, minmax(0, 1fr)); --wall-gap: 0.75rem; }
+  .wall__col:nth-child(2) { margin-top: -14%; }
+  .wall__col:nth-child(3) { margin-top: -32%; }
+  .wall__col:nth-child(4) { display: block; margin-top: -8%; }
+  .hero__veil {
+    background:
+      linear-gradient(90deg,
+        rgb(var(--veil) / 0.9) 0%,
+        rgb(var(--veil) / 0.72) 36%,
+        rgb(var(--veil) / 0.22) 70%,
+        rgb(var(--veil) / 0.12) 100%),
+      linear-gradient(to top, rgb(var(--veil) / 0.45) 0%, rgb(var(--veil) / 0) 40%);
   }
-  .hero__text { grid-column: 1 / 6; }
-  .hero__lead { margin-top: var(--s-6); font-size: 1.1875rem; }
+  .hero__content { padding-block: calc(var(--header-h) + var(--s-6)) var(--s-9); }
+  .hero__title { font-size: clamp(5rem, 8.4vw, 8.25rem); }
+  .hero__lead { margin-top: var(--s-6); max-width: 34ch; font-size: 1.1875rem; }
   .hero__actions { margin-top: var(--s-7); }
 
-  .hero__visual {
-    grid-column: 6 / 13;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-start;
-    gap: var(--s-5);
-  }
-  .hero__photo--main { width: clamp(18rem, 30vw, 27.5rem); flex: none; }
-  .hero__photo--accent {
-    display: block;
-    width: clamp(10rem, 17vw, 15.5rem);
-    flex: none;
-    align-self: flex-end;
-    margin-bottom: calc(-1 * var(--s-9));
-  }
-  .hero__photo--accent .media { aspect-ratio: 4 / 5; }
-
-  /* Servicios: índice a la izquierda, vista previa fija a la derecha */
-  .services { padding-top: var(--s-9); }
+  /* Servicios: uñas a la izquierda; pestañas y cejas apiladas a la derecha */
+  .services { padding-top: var(--s-10); }
+  .services__head { max-width: 40rem; }
   .services__grid {
-    display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: var(--s-5);
+    row-gap: var(--s-7);
+    align-items: center;
+    margin-top: var(--s-8);
     padding-bottom: var(--s-10);
   }
-  .services__head { grid-column: 1 / 8; }
-  .services__list { grid-column: 1 / 8; margin-top: var(--s-8); }
-  .services__preview {
-    display: block;
-    grid-column: 9 / 13;
-    grid-row: 1 / span 2;
-    align-self: start;
-    position: sticky;
-    top: calc(var(--header-h) + var(--s-6));
-  }
-
-  .service {
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas: "body cta";
-    padding-block: var(--s-6);
-  }
-  .service__thumb { display: none; }
-  .service__name { font-size: 3.25rem; }
-  .service.is-active .service__name { font-style: italic; }
-  .service.is-active::after { transform: scaleX(1); }
-
-  .preview {
-    position: relative;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    background: var(--placeholder);
-  }
-  .preview__item {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.7s var(--ease-out);
-  }
-  .preview__item.is-active { opacity: 1; }
+  .svc--nails { grid-column: 1 / 7; grid-row: 1 / span 2; }
+  .svc--row { grid-column: 8 / 13; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); column-gap: var(--s-6); }
+  .svc--nails .svc__name { font-size: 4.25rem; }
+  .svc--row .svc__name { font-size: 2.75rem; }
 
   /* Labios: foto e inserto del proceso a la izquierda, texto a la derecha */
   .feature { padding-block: var(--s-10) var(--s-11); }
@@ -1100,16 +1033,13 @@ svg use { pointer-events: none; }
 /* ==========================================================================
    Animaciones: estado inicial solo si hay movimiento (clase .motion en <html>)
    ========================================================================== */
+.motion [data-wall-col],
 .motion [data-intro],
 .motion [data-reveal],
 .motion [data-split],
-.motion [data-hero-title],
-.motion .hero__photo figcaption { opacity: 0; }
-.motion [data-focus]:not(.preview__item) .media__img { opacity: 0; }
-.motion .hero__photo .media,
-.motion .service__thumb,
-.motion [data-media-reveal],
-.motion .preview { clip-path: inset(100% 0 0 0); }
+.motion [data-hero-title] { opacity: 0; }
+.motion [data-focus] .media__img { opacity: 0; }
+.motion [data-media-reveal] { clip-path: inset(100% 0 0 0); }
 
 /* Holgura de las máscaras de SplitText para no recortar cursivas ni comas */
 .split-line-mask {

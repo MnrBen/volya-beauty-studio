@@ -99,7 +99,7 @@
 
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-  <header class="site-header" data-header>
+  <header class="site-header on-dark" data-header>
     <div class="container site-header__inner" data-intro>
       <a class="brand" href="#inicio" aria-label="VOLYA Beauty Studio, inicio">
         <img src="img/logo-160.webp" width="160" height="160" alt="VOLYA Beauty Studio">
@@ -138,124 +138,126 @@
   </div>
 
   <main id="contenido">
-    <!-- PORTADA -->
-    <section class="hero" id="inicio" aria-labelledby="hero-title">
-      <div class="container hero__inner">
-        <div class="hero__text">
-          <h1 class="hero__title" id="hero-title" data-hero-title>Belleza<br><em>al detalle</em>,<br>en Irun.</h1>
-          <p class="hero__lead" data-intro>Estudio de belleza de Olga Maistrenko: uñas, pestañas, cejas y micropigmentación de labios.</p>
-          <div class="hero__actions" data-intro data-hero-actions>
-            <a class="btn" href="https://wa.me/34637052157?text=Hola%2C%20quer%C3%ADa%20pedir%20cita%20en%20VOLYA">
-              <svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Pedir cita por WhatsApp
-            </a>
-            <a class="link-call" href="tel:+34637052157">o llama al <span>637 052 157</span></a>
+    <!-- PORTADA: muro de trabajos de Olga con el título superpuesto -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title" data-hero>
+      <div class="hero__wall" aria-hidden="true" data-wall>
+          <div class="wall__col" data-wall-col>
+            <div class="wall__track">
+              <div class="wall__set">
+                <img class="wall__img" src="img/manicura-17-4x5-360.webp" srcset="img/manicura-17-4x5-360.webp 360w, img/manicura-17-4x5-560.webp 560w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" width="360" height="450" alt="">
+                <img class="wall__img" src="img/labios-5-4x5-360.webp" srcset="img/labios-5-4x5-360.webp 360w, img/labios-5-4x5-560.webp 560w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" width="360" height="450" alt="">
+                <img class="wall__img" src="img/manicura-14-4x5-360.webp" srcset="img/manicura-14-4x5-360.webp 360w, img/manicura-14-4x5-560.webp 560w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" width="360" height="450" alt="">
+              </div>
+            </div>
           </div>
-          <p class="rating" data-intro>
-            <span class="rating__score">5,0</span>
-            <span class="rating__stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
-            <span><span class="sr-only">de 5 · </span>37 reseñas en Google</span>
-          </p>
-        </div>
+          <div class="wall__col" data-wall-col>
+            <div class="wall__track">
+              <div class="wall__set">
+                <img class="wall__img" src="img/manicura-3-4x5-360.webp" srcset="img/manicura-3-4x5-360.webp 360w, img/manicura-3-4x5-560.webp 560w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" width="360" height="450" alt="">
+                <img class="wall__img" src="img/manicura-18-4x5-360.webp" srcset="img/manicura-18-4x5-360.webp 360w, img/manicura-18-4x5-560.webp 560w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" width="360" height="450" alt="">
+                <img class="wall__img" src="img/labios-2-4x5-360.webp" srcset="img/labios-2-4x5-360.webp 360w, img/labios-2-4x5-560.webp 560w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" width="360" height="450" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="wall__col" data-wall-col>
+            <div class="wall__track">
+              <div class="wall__set">
+                <img class="wall__img" src="img/manicura-16-4x5-360.webp" srcset="img/manicura-16-4x5-360.webp 360w, img/manicura-16-4x5-560.webp 560w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" width="360" height="450" alt="" loading="lazy">
+                <img class="wall__img" src="img/manicura-20-4x5-360.webp" srcset="img/manicura-20-4x5-360.webp 360w, img/manicura-20-4x5-560.webp 560w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" width="360" height="450" alt="" loading="lazy">
+                <img class="wall__img" src="img/manicura-4-4x5-360.webp" srcset="img/manicura-4-4x5-360.webp 360w, img/manicura-4-4x5-560.webp 560w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" width="360" height="450" alt="" loading="lazy">
+              </div>
+            </div>
+          </div>
+          <div class="wall__col" data-wall-col>
+            <div class="wall__track">
+              <div class="wall__set">
+                <img class="wall__img" src="img/manicura-13-4x5-360.webp" srcset="img/manicura-13-4x5-360.webp 360w, img/manicura-13-4x5-560.webp 560w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" width="360" height="450" alt="" loading="lazy">
+                <img class="wall__img" src="img/manicura-21-4x5-360.webp" srcset="img/manicura-21-4x5-360.webp 360w, img/manicura-21-4x5-560.webp 560w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" width="360" height="450" alt="" loading="lazy">
+                <img class="wall__img" src="img/manicura-5-4x5-360.webp" srcset="img/manicura-5-4x5-360.webp 360w, img/manicura-5-4x5-560.webp 560w" sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" width="360" height="450" alt="" loading="lazy">
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="hero__veil" aria-hidden="true"></div>
 
-        <div class="hero__visual">
-          <figure class="hero__photo hero__photo--main" data-parallax="0.05">
-            <div class="media" data-focus>
-              <img class="media__lqip" alt="" aria-hidden="true" src="data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAABwBQCdASoYAB4APtFUokuoJKMhsAgBABoJYgCnTY3S3jOaMs2DT7Oj1Vf3jT3Lgco04KoAAP71bVxML38Yv25pt6NUdmRPFrKww/05IKSIthnexfUwt5aIZT4apkk8gZeUkCgcBe4ysrhQ5xUQ69C9uxFc7dWRHOtUd+p/EdtFBBvZ37rg76M4HvCMrTEZHhi9Ovex+vEHVw+/tPsSyUcpKK2IZbQfnH8a8zbUn+eMEU/Tv4wJues2dXf/HOex9k8bVikKRGraCRmE6x2GDvGjFUTBy2YAAAA=">
-              <img class="media__img" src="img/manicura-17-4x5-764.webp"
-                   srcset="img/manicura-17-4x5-480.webp 480w, img/manicura-17-4x5-764.webp 764w"
-                   sizes="(min-width: 1024px) 30vw, (min-width: 768px) 46vw, 100vw"
-                   width="764" height="955" fetchpriority="high"
-                   alt="Manicura almendra nude con degradado, trabajo de Olga en VOLYA">
-            </div>
-            <figcaption>Manicura almendra nude</figcaption>
-          </figure>
-          <figure class="hero__photo hero__photo--accent" data-parallax="-0.12">
-            <div class="media" data-focus>
-              <img class="media__lqip" alt="" aria-hidden="true" src="data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAACQBQCdASoYAB4APtFYpU0oJKOiMBgIAQAaCWwAtRegAOp+74Jrlv4mvkcN87TMYQ1B01NYoADfy6dvbcrIPbQRJOX0fhoDqM3zmSOz2gpw0VA9zftS2uAsEH5UvXTz+bOC9/MZnELWdN+Us8Dr+t/T4nkoTdW4T+0ZqcpJzb3MfjP+Gmc6LBGQ1nkYgqe7h8CNLdI1UMy4qaOcDin29fDQtMVqqPufuKsDlt7Dk+lFGfAA">
-              <img class="media__img" src="img/labios-5-4x5-688.webp"
-                   srcset="img/labios-5-4x5-480.webp 480w, img/labios-5-4x5-688.webp 688w"
-                   sizes="17vw" width="688" height="860" loading="lazy"
-                   alt="Labios con micropigmentación, trabajo de Olga en VOLYA">
-            </div>
-            <figcaption>Micropigmentación de labios</figcaption>
-          </figure>
+      <div class="container hero__content">
+        <h1 class="hero__title" id="hero-title" data-hero-title>Belleza<br><em>al detalle</em>,<br>en Irun.</h1>
+        <p class="hero__lead" data-intro>Estudio de belleza de Olga Maistrenko: uñas, pestañas, cejas y micropigmentación de labios.</p>
+        <div class="hero__actions" data-intro data-hero-actions>
+          <a class="btn btn--gold" href="https://wa.me/34637052157?text=Hola%2C%20quer%C3%ADa%20pedir%20cita%20en%20VOLYA">
+            <svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Pedir cita por WhatsApp
+          </a>
+          <a class="link-call" href="tel:+34637052157">o llama al <span>637 052 157</span></a>
         </div>
+        <p class="rating" data-intro>
+          <span class="rating__score">5,0</span>
+          <span class="rating__stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+          <span><span class="sr-only">de 5 · </span>37 reseñas en Google</span>
+        </p>
       </div>
     </section>
 
     <!-- SERVICIOS -->
     <section class="services" id="servicios" aria-labelledby="servicios-title">
-      <div class="container services__grid">
+      <div class="container">
         <div class="services__head">
           <h2 class="section-title" id="servicios-title" data-split>Servicios</h2>
           <p class="services__intro" data-reveal>Precisión, material esterilizado y resultados naturales. Elige y pide cita por WhatsApp.</p>
         </div>
 
-        <ol class="services__list" role="list">
-          <li class="service is-active" data-service>
-            <span class="rule" aria-hidden="true"></span>
-            <span class="media service__thumb" data-focus>
-              <img class="media__lqip" alt="" aria-hidden="true" src="data:image/webp;base64,UklGRjgBAABXRUJQVlA4ICwBAACQBgCdASoYAB4APtFWpEuoJKOhsAgBABoJZgCdMyYCoEAjwNrOW1l6r7PfSAUgMSEVxKDbCFNJCLxNMycQAP71zq3Wkp2J2pLVGb5fjntptaxrnK0omPT7GddI2rOeqvjQean/Dzg1yEe4Rk3dbo6etcM9SHbubsFQALCSavNxLfPYfFC2dM7FK/+rgp3iSt+k0+CWQYzCiDv7pC6MmdpPUuUwvjEXs5OOUHchAXbbwU8y1aE6vr2PJ7VH4rc1DrjHnQYhnyz143zI0RFJsH9WehAOK3W4nioGa3+vhVLPi2GaJEtRYq7cvS1Kqlf7LriZGn+wKxuwBr6rX1T7qPoxsoA2l0HQ1/zp2GaF8F5D/GYA0SNBY46SDItmtHHTiUAWxMeNOljoJ+gYAAA=">
-              <img class="media__img" src="img/manicura-24-4x5-515.webp" width="515" height="644" loading="lazy" alt="Manicura francesa negra con lazos">
-            </span>
-            <div class="service__body">
-              <h3 class="service__name">Uñas</h3>
-              <p class="service__detail">Manicura · Pedicura · Manicura masculina</p>
+        <div class="services__grid">
+          <article class="svc svc--nails" aria-labelledby="svc-unas">
+            <div class="svc__gallery">
+              <div class="media svc__main" data-focus data-media-reveal>
+                <img class="media__lqip" alt="" aria-hidden="true" src="data:image/webp;base64,UklGRvoAAABXRUJQVlA4IO4AAAAQBgCdASoYAB4APtFWpUwoJKOiKA1RABoJYgCdMt7CmBWXvhLGEO5k1x1p4Caus/9zkLEWLDwZWgAA/tmcCt3apCsrexPqUKamgpzHyM4E2XpsywSsnvMJ+g810eGPAF40gFdEYeAtELfyGzFV6+Ac3Ca1vCTgVwtJO5DevwChzh3eqCeTVfd2+Cdx2D+tXe3r60Sn7CkaJ70xS9Hc23ttfcS6ZGeac/NU6EjlzktxqpDI/QlrCMmDuNL5Io2QKw9SKdW3ziASSIh87xZyGwAQiVQlMgqZW/fIAqrtlv0dpkfVELBCe1IipCPnWeQA">
+                <img class="media__img" src="img/manicura-2-4x5-752.webp" srcset="img/manicura-2-4x5-480.webp 480w, img/manicura-2-4x5-752.webp 752w" sizes="(min-width: 1024px) 31vw, 64vw" width="752" height="940" loading="lazy" alt="Manicura nude con detalles en pan de oro">
+              </div>
+              <div class="media svc__side" data-focus data-media-reveal>
+                <img class="media__lqip" alt="" aria-hidden="true" src="data:image/webp;base64,UklGRhYBAABXRUJQVlA4IAoBAAAQBgCdASoYAB4APtFUokuoJKMhsAgBABoJbACsAYxY1ZXjOkTOb7tWRdkqZ4PqsPwlFA8Xcjh26gAA/ffzNu5Vc2sVImL+C9Xkn4YGHe5UjuGh9dBcRQsT5QsvQGRTGaLHL360lWS0+YgzPPMKA1as/tI2lYE8CCQxAkKW1gCRdmGYAcrswwVGu/4fU+bwxcYoVUi0R4L1Z2aNX7T7rNfIOAHnbLu693KvySPIal3AqvsnVufP7hR/A7visNCozujKi+jtxBe8XXrzkX5WBOlCZ5ZNgHab0uckjyLO9sgh75HgbInuoXnZ8TH9ySX3/dhDMKIWbXVNIQFJ+GJ3wUOlHBaIlfwixFIAAA==">
+                <img class="media__img" src="img/manicura-19-4x5-560.webp" srcset="img/manicura-19-4x5-360.webp 360w, img/manicura-19-4x5-560.webp 560w" sizes="(min-width: 1024px) 15vw, 32vw" width="560" height="700" loading="lazy" alt="Manicura roja con una flor pintada a mano">
+              </div>
+              <div class="media svc__side" data-focus data-media-reveal>
+                <img class="media__lqip" alt="" aria-hidden="true" src="data:image/webp;base64,UklGRjgBAABXRUJQVlA4ICwBAACQBgCdASoYAB4APtFWpEuoJKOhsAgBABoJZgCdMyYCoEAjwNrOW1l6r7PfSAUgMSEVxKDbCFNJCLxNMycQAP71zq3Wkp2J2pLVGb5fjntptaxrnK0omPT7GddI2rOeqvjQean/Dzg1yEe4Rk3dbo6etcM9SHbubsFQALCSavNxLfPYfFC2dM7FK/+rgp3iSt+k0+CWQYzCiDv7pC6MmdpPUuUwvjEXs5OOUHchAXbbwU8y1aE6vr2PJ7VH4rc1DrjHnQYhnyz143zI0RFJsH9WehAOK3W4nioGa3+vhVLPi2GaJEtRYq7cvS1Kqlf7LriZGn+wKxuwBr6rX1T7qPoxsoA2l0HQ1/zp2GaF8F5D/GYA0SNBY46SDItmtHHTiUAWxMeNOljoJ+gYAAA=">
+                <img class="media__img" src="img/manicura-24-4x5-515.webp" width="515" height="644" loading="lazy" alt="Manicura francesa negra con lazos">
+              </div>
+            </div>
+            <div class="svc__body">
+              <h3 class="svc__name" id="svc-unas">Uñas</h3>
+              <p class="svc__detail" data-reveal>Manicura · Pedicura · Manicura masculina</p>
               <!-- Precio y duración: pendientes de confirmar con la dueña -->
+              <a class="btn btn--line btn--sm svc__cta" href="https://wa.me/34637052157?text=Hola%2C%20quer%C3%ADa%20pedir%20cita%20para%20u%C3%B1as%20en%20VOLYA">
+                <svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Pedir cita<span class="sr-only"> para uñas por WhatsApp</span>
+              </a>
             </div>
-            <a class="service__cta" href="https://wa.me/34637052157?text=Hola%2C%20quer%C3%ADa%20pedir%20cita%20para%20u%C3%B1as%20en%20VOLYA">
-              Pedir cita<span class="sr-only"> para uñas por WhatsApp</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg>
-            </a>
-          </li>
+          </article>
 
-          <li class="service" data-service>
-            <span class="rule" aria-hidden="true"></span>
-            <span class="media service__thumb" data-focus>
-              <img class="media__lqip" alt="" aria-hidden="true" src="data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAACQBQCdASoYAB4APtFgqU+oJSOiKAgBABoJZQCuHA9kor+2IJmvBgK0Fi+SO8JfnBxgXZPB4AD633YrT+tXivK8ORtWmhlp/0xP/Avm/hq7YdoZKvoXaJjDIW327VmQv7sKnW5LnGtsfEXQu5qZNNRV2dWqR5HjeeieZEeocXi84n8dCjlDy1HT73AfcSRD7MoNDG+ujFpl5fUlVTn4chtF6KY+sioaowTreMfLEYA/CW+jpBFSdJwhnT5Y6SPKiAAAAA==">
-              <img class="media__img" src="img/pestanas-1-4x5-480.webp" width="480" height="600" loading="lazy" alt="Lifting de pestañas en primer plano">
-            </span>
-            <div class="service__body">
-              <h3 class="service__name">Pestañas</h3>
-              <p class="service__detail">Lifting · Laminado</p>
+          <article class="svc svc--row" aria-labelledby="svc-pestanas">
+            <div class="media svc__photo" data-focus data-media-reveal>
+                <img class="media__lqip" alt="" aria-hidden="true" src="data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAACQBQCdASoYAB4APtFgqU+oJSOiKAgBABoJZQCuHA9kor+2IJmvBgK0Fi+SO8JfnBxgXZPB4AD633YrT+tXivK8ORtWmhlp/0xP/Avm/hq7YdoZKvoXaJjDIW327VmQv7sKnW5LnGtsfEXQu5qZNNRV2dWqR5HjeeieZEeocXi84n8dCjlDy1HT73AfcSRD7MoNDG+ujFpl5fUlVTn4chtF6KY+sioaowTreMfLEYA/CW+jpBFSdJwhnT5Y6SPKiAAAAA==">
+                <img class="media__img" src="img/pestanas-1-4x5-752.webp" srcset="img/pestanas-1-4x5-480.webp 480w, img/pestanas-1-4x5-752.webp 752w" sizes="(min-width: 1024px) 14vw, 40vw" width="752" height="940" loading="lazy" alt="Lifting de pestañas en primer plano">
+              </div>
+            <div class="svc__body">
+              <h3 class="svc__name" id="svc-pestanas">Pestañas</h3>
+              <p class="svc__detail" data-reveal>Lifting · Laminado</p>
+              <a class="btn btn--line btn--sm svc__cta" href="https://wa.me/34637052157?text=Hola%2C%20quer%C3%ADa%20pedir%20cita%20para%20pesta%C3%B1as%20en%20VOLYA">
+                <svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Pedir cita<span class="sr-only"> para pestañas por WhatsApp</span>
+              </a>
             </div>
-            <a class="service__cta" href="https://wa.me/34637052157?text=Hola%2C%20quer%C3%ADa%20pedir%20cita%20para%20pesta%C3%B1as%20en%20VOLYA">
-              Pedir cita<span class="sr-only"> para pestañas por WhatsApp</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg>
-            </a>
-          </li>
+          </article>
 
-          <li class="service" data-service>
-            <span class="rule" aria-hidden="true"></span>
-            <span class="media service__thumb" data-focus>
-              <img class="media__lqip" alt="" aria-hidden="true" src="data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAACwBQCdASoYAB4APtFgqE+oJSOiKAgBABoJYgCdMw6Bt8iUHJwftHMdgk7tdxL0fr4xYHi1GAAA/q+NVPTlVrd7m6hreqxQiSWcaTIJkSfTYBCrzyiTI9Y0n/z53UzRzGPWCewIqWjgLzucHaHuL9lTARdqJonT+iZ7duSGsTkC7be9aSBiTC3EIBRQP92VEnASN4s6TogbavDbo2e110deM09dgaWAbDQ73uTDcbx8Hy6pJhJLHcqaFYjnKZOFfAA=">
-              <img class="media__img" src="img/cejas-1-4x5-452.webp" width="452" height="565" loading="lazy" alt="Ceja con acabado natural">
-            </span>
-            <div class="service__body">
-              <h3 class="service__name">Cejas</h3>
-              <p class="service__detail">Con resultado natural</p>
+          <article class="svc svc--row svc--flip" aria-labelledby="svc-cejas">
+            <div class="media svc__photo" data-focus data-media-reveal>
+                <img class="media__lqip" alt="" aria-hidden="true" src="data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAACwBQCdASoYAB4APtFgqE+oJSOiKAgBABoJYgCdMw6Bt8iUHJwftHMdgk7tdxL0fr4xYHi1GAAA/q+NVPTlVrd7m6hreqxQiSWcaTIJkSfTYBCrzyiTI9Y0n/z53UzRzGPWCewIqWjgLzucHaHuL9lTARdqJonT+iZ7duSGsTkC7be9aSBiTC3EIBRQP92VEnASN4s6TogbavDbo2e110deM09dgaWAbDQ73uTDcbx8Hy6pJhJLHcqaFYjnKZOFfAA=">
+                <img class="media__img" src="img/cejas-1-4x5-452.webp" width="452" height="565" loading="lazy" alt="Ceja con acabado natural">
+              </div>
+            <div class="svc__body">
+              <h3 class="svc__name" id="svc-cejas">Cejas</h3>
+              <p class="svc__detail" data-reveal>Con resultado natural</p>
+              <a class="btn btn--line btn--sm svc__cta" href="https://wa.me/34637052157?text=Hola%2C%20quer%C3%ADa%20pedir%20cita%20para%20cejas%20en%20VOLYA">
+                <svg aria-hidden="true"><use href="#i-whatsapp"/></svg> Pedir cita<span class="sr-only"> para cejas por WhatsApp</span>
+              </a>
             </div>
-            <a class="service__cta" href="https://wa.me/34637052157?text=Hola%2C%20quer%C3%ADa%20pedir%20cita%20para%20cejas%20en%20VOLYA">
-              Pedir cita<span class="sr-only"> para cejas por WhatsApp</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg>
-            </a>
-            <span class="rule rule--end" aria-hidden="true"></span>
-          </li>
-        </ol>
-
-        <!-- Vista previa de escritorio: cambia con el servicio señalado -->
-        <div class="services__preview" aria-hidden="true">
-          <div class="preview">
-            <div class="media preview__item is-active" data-focus>
-              <img class="media__lqip" alt="" src="data:image/webp;base64,UklGRjgBAABXRUJQVlA4ICwBAACQBgCdASoYAB4APtFWpEuoJKOhsAgBABoJZgCdMyYCoEAjwNrOW1l6r7PfSAUgMSEVxKDbCFNJCLxNMycQAP71zq3Wkp2J2pLVGb5fjntptaxrnK0omPT7GddI2rOeqvjQean/Dzg1yEe4Rk3dbo6etcM9SHbubsFQALCSavNxLfPYfFC2dM7FK/+rgp3iSt+k0+CWQYzCiDv7pC6MmdpPUuUwvjEXs5OOUHchAXbbwU8y1aE6vr2PJ7VH4rc1DrjHnQYhnyz143zI0RFJsH9WehAOK3W4nioGa3+vhVLPi2GaJEtRYq7cvS1Kqlf7LriZGn+wKxuwBr6rX1T7qPoxsoA2l0HQ1/zp2GaF8F5D/GYA0SNBY46SDItmtHHTiUAWxMeNOljoJ+gYAAA=">
-              <img class="media__img" src="img/manicura-24-4x5-515.webp" width="515" height="644" loading="lazy" alt="">
-            </div>
-            <div class="media preview__item" data-focus>
-              <img class="media__lqip" alt="" src="data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAACQBQCdASoYAB4APtFgqU+oJSOiKAgBABoJZQCuHA9kor+2IJmvBgK0Fi+SO8JfnBxgXZPB4AD633YrT+tXivK8ORtWmhlp/0xP/Avm/hq7YdoZKvoXaJjDIW327VmQv7sKnW5LnGtsfEXQu5qZNNRV2dWqR5HjeeieZEeocXi84n8dCjlDy1HT73AfcSRD7MoNDG+ujFpl5fUlVTn4chtF6KY+sioaowTreMfLEYA/CW+jpBFSdJwhnT5Y6SPKiAAAAA==">
-              <img class="media__img" src="img/pestanas-1-4x5-752.webp" srcset="img/pestanas-1-4x5-480.webp 480w, img/pestanas-1-4x5-752.webp 752w" sizes="(min-width: 1024px) 28vw, 1px" width="752" height="940" loading="lazy" alt="">
-            </div>
-            <div class="media preview__item" data-focus>
-              <img class="media__lqip" alt="" src="data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAACwBQCdASoYAB4APtFgqE+oJSOiKAgBABoJYgCdMw6Bt8iUHJwftHMdgk7tdxL0fr4xYHi1GAAA/q+NVPTlVrd7m6hreqxQiSWcaTIJkSfTYBCrzyiTI9Y0n/z53UzRzGPWCewIqWjgLzucHaHuL9lTARdqJonT+iZ7duSGsTkC7be9aSBiTC3EIBRQP92VEnASN4s6TogbavDbo2e110deM09dgaWAbDQ73uTDcbx8Hy6pJhJLHcqaFYjnKZOFfAA=">
-              <img class="media__img" src="img/cejas-1-4x5-452.webp" width="452" height="565" loading="lazy" alt="">
-            </div>
-          </div>
+          </article>
         </div>
       </div>
 
@@ -303,8 +305,8 @@
 
         <figure class="olga__photo">
           <div class="media" data-focus data-media-reveal>
-            <img class="media__lqip" alt="" aria-hidden="true" src="data:image/webp;base64,UklGRkgBAABXRUJQVlA4IDwBAABQBwCdASoYACAAPslQn0unpKKhsAwA8BkJbACdMoSIp+VBEyoHuiQjLYq3RZeweRw2rb4F2bWpNtqw5iuifONVJJuAAPw64BJ9nJ++S0Ik1yCp+OjrPg5yAAKYDRJddL0g91c8V8lIetpWVbc+gmS/V4+qGlYFHMgdclQmtFvbzm+6FfE00X3Q1Nvusj943r2IgFb4heVfUYiPVe4apVSA6jVR8JfIYyayVBS999hFNpEZifJzzFit4XoPQVc4PuNvjDYz1tzEuZUKfxv7/tplW7TQTmiPokQeI0znVdt0CGlzMzXPxw0qb8vmmi33YxoOIkDLGUI9Gbhov7FFxBf6hd620aEHlcXcvBuuqvZArS5u+aV8gblh/ZbwC8Rtvrf1ROlagAxfXfQDslq8jbOC2qSLN5mUqU0IEWAA">
-            <img class="media__img" src="img/olga-2-3x4-396.webp" width="396" height="528" loading="lazy"
+            <img class="media__lqip" alt="" aria-hidden="true" src="data:image/webp;base64,UklGRigBAABXRUJQVlA4IBwBAAAQBgCdASoYACAAPtFYpU0oJSOiMBgIAQAaCWgAuyE7oMki+ecWX+acBoA4IeK7P2zlaKRDT2HEwZAA/M+YMXRyycnw15Vu9ZPRho4NjzAhkECIyfwOb6nrvLCg7QSC5QF06pJXYnLMhmpLVwVNobyS9Z/EMLzAmSRdkiVJA2vJtMm2aHoh99hZL1c1OPnT/dvMIz4pJaLdf1CaZrWnMZT0yfS31NSDvh/o5dTWBVyxKqs4mQ3EnbYDrUsuqO8z417N6wLvV2MxPZv0mF23BitHh2mBLRYETbCRisED1707CQgAiSjIDGjeatHqDyNdNqBB6VP7Wf99PpNx3SB8nRT88Es8aqGh66pHMTRELCCADeME3OGRLH2uCgAAAA==">
+            <img class="media__img" src="img/olga-1-3x4-420.webp" width="420" height="560" loading="lazy"
                  alt="Olga Maistrenko, fundadora de VOLYA Beauty Studio">
           </div>
         </figure>

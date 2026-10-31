@@ -6,12 +6,12 @@ Referencia de marca para la web. Las imágenes originales viven en `imagenes/` y
 Los trabajos de Olga en primer plano son los protagonistas, sobre marfil y arena cálidos con el negro y el dorado del logo como acentos. Sin fondos negros: el negro queda para el logo, el texto y los botones. Las fotos se descubren y «enfocan» al aparecer.
 
 ## Alcance (demo reducida)
-1. Portada muy visual (foto grande sobre marfil).
+1. Portada: muro de trabajos de Olga en columnas que se desplazan despacio, con el título superpuesto sobre un velo cálido.
 2. Servicios, con la micropigmentación de labios destacada en un bloque arena.
 3. Olga y 2–3 reseñas.
 4. Contacto (dirección, horario, botones) y pie con el aviso legal.
 
-Móvil: unas 4,6 pantallas a 390 × 844. Sin galería ni secciones extra.
+La longitud en móvil ya no está limitada. Sin galería ni secciones extra.
 
 ## Resolución de las fotos
 Los originales miden unos 700 px de ancho. En escritorio se muestran como mucho a ~430 px (portada, desde 764 px: nítida hasta densidad ≈1,8) y ~465 px (labios, nítida hasta ≈1,4). En pantallas Retina (densidad 2) se amplían ~1,4×. Para nitidez total en Retina harían falta los originales del móvil de Olga.
@@ -51,13 +51,12 @@ Sin degradados. Sin rosa pastel.
 
 | Uso | Original | Recorte (`img/`) |
 |---|---|---|
-| Portada (principal) | `manicura-17` — almendra nude con degradado | 4:5 · 480 / 764 |
-| Portada (acompañante, solo escritorio) | `labios-5` | 4:5 · 480 / 688 |
-| Servicios · Uñas | `manicura-24` — francesa negra con lazos | 4:5 (miniatura en móvil, vista previa en escritorio) |
+| Portada (muro, 4:5 · 360/560) | `manicura-17, 16, 3, 4, 5, 13, 14, 18, 20, 21`, `labios-5`, `labios-2` | Móvil 2 columnas, tablet 3, escritorio 4 |
+| Servicios · Uñas (collage) | `manicura-2` (principal), `manicura-19`, `manicura-24` | 4:5 |
 | Servicios · Pestañas | `pestanas-1` | 4:5 |
 | Servicios · Cejas | `cejas-1` | 4:5 (zona inferior, sin las fotos insertadas) |
 | Labios destacado | `labios-1` (resultado) + `labios-6` (proceso) | 4:5 |
-| Olga | `olga-2` recortada (cara nítida, sin cartel ni mesa) | 3:4 · 396 |
+| Olga | `olga-1` recortada para que mande ella frente a los globos | 3:4 · 420 |
 
 **Reseñas elegidas (texto literal):** Ainhoa O., Laura, Natalia P.
 
@@ -68,8 +67,8 @@ Sin degradados. Sin rosa pastel.
 - `manicura-10` — el turquesa choca con la paleta.
 - `labios-3` — menos nivel.
 - `labios-4` — crema anestésica.
-- `olga-1` — fondo de globos rosas.
-- `olga-3` — la cara sale desenfocada (el foco está en el cartel).
+- `olga-2`, `olga-3` — se eligió `olga-1` para la sección de Olga.
+- `manicura-7` — en el muro mandaba la orquídea.
 - `manicura-23` — descartada para la portada.
 
 ## Pendientes de confirmar con la dueña
